@@ -1,0 +1,87 @@
+# Plantilla de proyecto — Análisis de Socavación MTC 2018
+# Unidades: Q m³/s, longitudes m, D50 mm, cotas m s.n.m.
+
+proyecto:
+  nombre: "Puente Rio Ejemplo"
+  Q100: 850.0
+  Q500: 1200.0
+  Q_ot: null
+
+cauce:
+  tipo: degradacion          # estable | degradacion | agradacion
+  y_sg_lp: 0.50
+  notas: "Cauce aluvial degradante — criterio conservador 0.50 m"
+
+estribo_izquierdo:
+  D50_mm: 2.5
+  Z_lecho: 2450.30
+  forma: muro_vertical       # muro_vertical | muro_vertical_aletas_45 | talud_2h1v | talud_3h1v
+  angulo_ataque: 90.0
+  L_prima: 12.0
+  Ae: 85.0
+  q100:
+    y1: 3.20
+    V1: 2.10
+    W1: 45.0
+    W2: 38.0
+    Q1: 800.0
+    Q2: 800.0
+    y0: 3.00
+    Sf: 0.002
+  q500:
+    y1: 4.10
+    V1: 2.80
+    W1: 48.0
+    W2: 38.0
+    Q1: 1150.0
+    Q2: 1150.0
+    y0: 3.50
+    Sf: 0.002
+
+estribo_derecho:
+  D50_mm: 3.0
+  Z_lecho: 2450.10
+  forma: muro_vertical
+  angulo_ataque: 90.0
+  L_prima: 10.0
+  Ae: 72.0
+  q100:
+    y1: 3.15
+    V1: 2.05
+    W1: 45.0
+    W2: 38.0
+    Q1: 800.0
+    Q2: 800.0
+    y0: 3.00
+    Sf: 0.002
+  q500:
+    y1: 4.05
+    V1: 2.75
+    W1: 48.0
+    W2: 38.0
+    Q1: 1150.0
+    Q2: 1150.0
+    y0: 3.50
+    Sf: 0.002
+
+pilares: []
+# Ejemplo pilar:
+# - nombre: "Pilar P1"
+#   ancho_a: 1.80
+#   forma: circular
+#   angulo_ataque: 0.0
+#   D50_mm: 2.5
+#   K3: 1.0
+#   K4: 1.0
+#   q100: { y1: 3.2, V1: 2.1, W1: 38, W2: 35, Q1: 800, Q2: 800, y0: 3.0, Sf: 0.002 }
+#   q500: { y1: 4.1, V1: 2.8, W1: 38, W2: 35, Q1: 1150, Q2: 1150, y0: 3.5, Sf: 0.002 }
+
+geotecnia:
+  cota_sondaje_min: 2445.0
+  hay_estrato_competente: true
+  roca_resistente: false
+  tipo_cimentacion: superficial   # superficial | profunda | zapata_sobre_pilotes | sobre_roca
+  Z_punta_pilotes: null
+  Z_encepado_zapata: null
+  D50_geotecnico_mm: 2.8
+  descripcion_estrato: "Grava arenosa densa bajo prisma de socavación"

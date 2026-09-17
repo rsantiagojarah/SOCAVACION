@@ -26,9 +26,22 @@ def cargar_proyecto(ruta: Path) -> Proyecto:
         root["pilares"] = datos.get("pilares", [])
         root["geotecnia"] = datos.get("geotecnia", {})
         root["cauce"] = datos.get("cauce", root.get("cauce", {}))
-        return Proyecto.model_validate(root)
+        proyecto = Proyecto.model_validate(root)
+    else:
+        proyecto = Proyecto.model_validate(datos)
 
-    return Proyecto.model_validate(datos)
+    _resolver_caudales_hidraulica(proyecto)
+    return proyecto
+
+
+def _resolver_caudales_hidraulica(proyecto: Proyecto) -> None:
+    """Completa Q1/Q2 de condiciones hidráulicas desde Q100/Q500 del proyecto."""
+    for est in proyecto.estribos():
+        est.q100.resolver_q(proyecto.Q100)
+        est.q500.resolver_q(proyecto.Q500)
+    for pilar in proyecto.pilares:
+        pilar.q100.resolver_q(proyecto.Q100)
+        pilar.q500.resolver_q(proyecto.Q500)
 
 
 def _merge_estribo(data: dict, lado: str) -> dict:

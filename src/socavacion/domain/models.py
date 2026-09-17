@@ -15,23 +15,47 @@ from socavacion.normative.constants import GAMMA_S_DEFAULT, GS_DEFAULT
 
 
 class CondicionHidraulica(BaseModel):
-    """Parámetros hidráulicos para un caudal (Q100 o Q500)."""
+    """Parámetros hidráulicos para un caudal (Q100 o Q500).
+
+    Q1 y Q2 son opcionales; si no se ingresan, se resuelven automáticamente
+    a partir del caudal total del proyecto (Q100 o Q500) para evitar
+    duplicar datos de entrada.
+    """
 
     y1: float = Field(..., gt=0, description="Tirante medio aproximación (m)")
     V1: float = Field(..., ge=0, description="Velocidad media aproximación (m/s)")
     W1: float = Field(..., gt=0, description="Ancho cauce aproximación (m)")
     W2: float = Field(..., gt=0, description="Luz hidráulica bajo puente (m)")
-    Q1: float = Field(..., gt=0, description="Caudal cauce principal aproximación (m³/s)")
-    Q2: float = Field(..., gt=0, description="Caudal sección contraída (m³/s)")
+    Q1: float | None = Field(
+        None,
+        gt=0,
+        description="Caudal cauce principal aproximación (m³/s); por defecto=Q_total",
+    )
+    Q2: float | None = Field(
+        None,
+        gt=0,
+        description="Caudal sección contraída (m³/s); por defecto=Q_total",
+    )
     y0: float = Field(..., gt=0, description="Tirante contraída antes socavación (m)")
     Sf: float = Field(..., ge=0, description="Pendiente línea de energía (m/m)")
 
+    def resolver_q(self, Q_total: float) -> None:
+        """Asigna Q1 y Q2 desde Q_total cuando no fueron ingresados."""
+        if self.Q1 is None:
+            self.Q1 = Q_total
+        if self.Q2 is None:
+            self.Q2 = Q_total
+
     @property
     def q1(self) -> float:
+        if self.Q1 is None:
+            raise ValueError("Q1 no resuelto; llamar resolver_q(Q_total) primero")
         return self.Q1 / self.W1
 
     @property
     def q2(self) -> float:
+        if self.Q2 is None:
+            raise ValueError("Q2 no resuelto; llamar resolver_q(Q_total) primero")
         return self.Q2 / self.W2
 
 

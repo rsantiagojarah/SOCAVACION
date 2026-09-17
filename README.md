@@ -5,7 +5,7 @@ Aplicación de terminal en Python para el análisis de socavación en puentes, s
 ## Requisitos
 
 - Python 3.10+
-- Dependencias: `typer`, `pydantic`, `pyyaml`, `rich`, `jinja2`
+- Dependencias: `typer`, `pydantic`, `pyyaml`, `jinja2`, `python-docx`
 
 ## Instalación
 
@@ -31,6 +31,20 @@ python -m socavacion init -o mi_proyecto.yaml
 python -m socavacion calc mi_proyecto.yaml
 ```
 
+**Prueba rápida con valores por defecto:**
+
+```bash
+python -m socavacion --demo
+python -m socavacion calc --demo
+```
+
+**Memoria de cálculo en Word:**
+
+```bash
+python -m socavacion calc mi_proyecto.yaml --word informe.docx
+python -m socavacion word mi_proyecto.yaml -o informe.docx
+```
+
 ## Arquitectura
 
 Monolito modular por fases:
@@ -39,8 +53,8 @@ Monolito modular por fases:
 |------|---------|
 | Ingreso | `input/loader`, `input/validator`, `input/wizard` |
 | Cálculo | `core/regime`, `core/general/*`, `core/contraction`, `core/local_*`, `core/pipeline` |
-| Resultados | `cli/display` |
-| Reportes | `report/builder` |
+| Resultados | `cli/display`, `cli/ascii_tables` |
+| Reportes | `report/builder`, `report/docx_builder` |
 | Geotecnia | `geotech/compatibility` |
 
 Cada módulo tiene una sola responsabilidad y ≤350 líneas.

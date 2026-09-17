@@ -1,7 +1,7 @@
 # Informe de Análisis de Socavación
 
 **Proyecto:** Puente Rio Ejemplo  
-**Fecha:** 2026-08-18 14:16  
+**Fecha:** 2026-09-13 22:49  
 **Norma:** Manual de Puentes MTC 2018 (Art. 1.2, 1.2.3a, 1.2.4, 1.2.6) / HEC-18
 
 ---
@@ -19,8 +19,8 @@
 
 | Estribo | y_s Q100 (m) | y_s Q500 (m) | **y_s diseño (m)** | Z lecho actual | Z lecho soc | Z cim mín |
 |---------|--------------|--------------|---------------------|----------------|-------------|-----------|
-| E-I | 35.817 | 40.380 | **40.380** | 2450.300 | 2409.920 | 2408.920 |
-| E-D | 36.825 | 41.288 | **41.288** | 2450.100 | 2408.812 | 2407.812 |
+| E-I | 37.050 | 40.742 | **40.742** | 2450.300 | 2409.558 | 2408.558 |
+| E-D | 38.101 | 41.668 | **41.668** | 2450.100 | 2408.432 | 2407.432 |
 
 
 ---
@@ -32,8 +32,8 @@
 
 | Estribo | y_sg (m) | y_sc (m) | y_sl (m) | y_s (m) | Régimen | Método general |
 |---------|----------|----------|----------|---------|---------|----------------|
-| E-I | 6.418 | 0.596 | 28.804 | 35.817 | lecho_vivo | Lischtvan-Lebediev |
-| E-D | 6.767 | 0.540 | 29.519 | 36.825 | lecho_vivo | Lischtvan-Lebediev |
+| E-I | 6.832 | 0.596 | 29.622 | 37.050 | lecho_vivo | Lischtvan-Lebediev |
+| E-D | 7.201 | 0.540 | 30.360 | 38.101 | lecho_vivo | Lischtvan-Lebediev |
 
 
 
@@ -43,8 +43,8 @@
 
 | Estribo | y_sg (m) | y_sc (m) | y_sl (m) | y_s (m) | Régimen | Método general |
 |---------|----------|----------|----------|---------|---------|----------------|
-| E-I | 8.154 | 1.317 | 30.909 | 40.380 | lecho_vivo | Lischtvan-Lebediev |
-| E-D | 8.611 | 1.258 | 31.418 | 41.288 | lecho_vivo | Lischtvan-Lebediev |
+| E-I | 8.516 | 1.317 | 30.909 | 40.742 | lecho_vivo | Lischtvan-Lebediev |
+| E-D | 8.991 | 1.258 | 31.418 | 41.668 | lecho_vivo | Lischtvan-Lebediev |
 
 
 
@@ -73,10 +73,10 @@
 
 | Ítem | Hidráulica | Geotecnia | Compatible |
 |------|------------|-----------|------------|
-| Cota lecho socavado | Z_soc min = 2408.81 m | Sondaje fondo = 2445.00 m | No |
+| Cota lecho socavado | Z_soc min = 2408.43 m | Sondaje fondo = 2445.00 m | No |
 | Material residual bajo prisma | D50 hidráulico en cauce | Grava arenosa densa | Sí |
 | Tipo de cimentación | superficial | Recomendación geotécnica alineada | Sí |
-| Reserva 1.00 m (Art. 1.2.4) | Z_cim_min = 2407.81 m | Competente a 2445.00 m | No |
+| Reserva 1.00 m (Art. 1.2.4) | Z_cim_min = 2407.43 m | Competente a 2445.00 m | No |
 | Roca / erosionabilidad | Material erosionable asumido | No roca resistente declarada | Sí |
 
 

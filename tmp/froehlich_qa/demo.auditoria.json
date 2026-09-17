@@ -1,0 +1,687 @@
+{
+  "proyecto_nombre": "Demo",
+  "Q_diseno": 55.778,
+  "Q_verif": 87.392412,
+  "caudales": [
+    {
+      "condicion": "diseno",
+      "Q": 55.778,
+      "estribos": [
+        {
+          "lado": "izquierdo",
+          "condicion": "diseno",
+          "regimen": null,
+          "general": null,
+          "y_sc": null,
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 4.586844969069261,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.0,
+              "theta": 90.0,
+              "Fr_a": 0.6951661217829112,
+              "L_prima": 2.0,
+              "ya": 1.5,
+              "Ve": 2.6666666666666665,
+              "Ae": 3.0,
+              "Qe": 8.0,
+              "ys": 4.586844969069261,
+              "A_total": 18.0,
+              "Q_total": 55.778,
+              "V_media_seccion": 3.098777777777778,
+              "R_informativo": 0.9
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m",
+              "A_total": "m2 (control)",
+              "Q_total": "m3/s (control)",
+              "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+              "R_informativo": "m (no interviene en Froehlich)"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+            },
+            "supuestos": []
+          },
+          "y_s_total": null,
+          "advertencias": [],
+          "escenario": "Q100"
+        },
+        {
+          "lado": "derecho",
+          "condicion": "diseno",
+          "regimen": null,
+          "general": null,
+          "y_sc": null,
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 3.2690753245012942,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 0.82,
+              "K2": 0.984804834864388,
+              "theta": 80.0,
+              "Fr_a": 0.6563533889294405,
+              "L_prima": 1.8,
+              "ya": 1.2222222222222223,
+              "Ve": 2.2727272727272725,
+              "Ae": 2.2,
+              "Qe": 5.0,
+              "ys": 3.2690753245012942,
+              "A_total": 18.0,
+              "Q_total": 55.778,
+              "V_media_seccion": 3.098777777777778,
+              "R_informativo": 0.9
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m",
+              "A_total": "m2 (control)",
+              "Q_total": "m3/s (control)",
+              "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+              "R_informativo": "m (no interviene en Froehlich)"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+            },
+            "supuestos": []
+          },
+          "y_s_total": null,
+          "advertencias": [],
+          "escenario": "Q100"
+        }
+      ],
+      "pilares": [],
+      "escenario": "Q100"
+    },
+    {
+      "condicion": "verificacion",
+      "Q": 87.392412,
+      "estribos": [
+        {
+          "lado": "izquierdo",
+          "condicion": "verificacion",
+          "regimen": null,
+          "general": null,
+          "y_sc": null,
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 5.544329323094121,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.0,
+              "theta": 90.0,
+              "Fr_a": 0.6874800221500681,
+              "L_prima": 2.5,
+              "ya": 1.8,
+              "Ve": 2.888888888888889,
+              "Ae": 4.5,
+              "Qe": 13.0,
+              "ys": 5.544329323094121,
+              "A_total": 28.0,
+              "Q_total": 87.392412,
+              "V_media_seccion": 3.1211575714285713,
+              "R_informativo": 1.2
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m",
+              "A_total": "m2 (control)",
+              "Q_total": "m3/s (control)",
+              "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+              "R_informativo": "m (no interviene en Froehlich)"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+            },
+            "supuestos": []
+          },
+          "y_s_total": null,
+          "advertencias": [],
+          "escenario": "Q500"
+        },
+        {
+          "lado": "derecho",
+          "condicion": "verificacion",
+          "regimen": null,
+          "general": null,
+          "y_sc": null,
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 4.219461211809008,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 0.82,
+              "K2": 0.984804834864388,
+              "theta": 80.0,
+              "Fr_a": 0.7099014056430265,
+              "L_prima": 2.0,
+              "ya": 1.6,
+              "Ve": 2.8125,
+              "Ae": 3.2,
+              "Qe": 9.0,
+              "ys": 4.219461211809008,
+              "A_total": 28.0,
+              "Q_total": 87.392412,
+              "V_media_seccion": 3.1211575714285713,
+              "R_informativo": 1.2
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m",
+              "A_total": "m2 (control)",
+              "Q_total": "m3/s (control)",
+              "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+              "R_informativo": "m (no interviene en Froehlich)"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+              "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+            },
+            "supuestos": []
+          },
+          "y_s_total": null,
+          "advertencias": [],
+          "escenario": "Q500"
+        }
+      ],
+      "pilares": [],
+      "escenario": "Q500"
+    }
+  ],
+  "estribos_finales": [
+    {
+      "lado": "izquierdo",
+      "y_s_100": 4.586844969069261,
+      "y_s_500": 5.544329323094121,
+      "y_s_diseno": 5.544329323094121,
+      "Z_lecho_actual": null,
+      "Z_lecho_soc": null,
+      "Z_cim_min": null,
+      "componentes_100": {
+        "lado": "izquierdo",
+        "condicion": "diseno",
+        "regimen": null,
+        "general": null,
+        "y_sc": null,
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 4.586844969069261,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 1.0,
+            "K2": 1.0,
+            "theta": 90.0,
+            "Fr_a": 0.6951661217829112,
+            "L_prima": 2.0,
+            "ya": 1.5,
+            "Ve": 2.6666666666666665,
+            "Ae": 3.0,
+            "Qe": 8.0,
+            "ys": 4.586844969069261,
+            "A_total": 18.0,
+            "Q_total": 55.778,
+            "V_media_seccion": 3.098777777777778,
+            "R_informativo": 0.9
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m",
+            "A_total": "m2 (control)",
+            "Q_total": "m3/s (control)",
+            "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+            "R_informativo": "m (no interviene en Froehlich)"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          },
+          "supuestos": []
+        },
+        "y_s_total": null,
+        "advertencias": [],
+        "escenario": "Q100"
+      },
+      "componentes_500": {
+        "lado": "izquierdo",
+        "condicion": "verificacion",
+        "regimen": null,
+        "general": null,
+        "y_sc": null,
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 5.544329323094121,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 1.0,
+            "K2": 1.0,
+            "theta": 90.0,
+            "Fr_a": 0.6874800221500681,
+            "L_prima": 2.5,
+            "ya": 1.8,
+            "Ve": 2.888888888888889,
+            "Ae": 4.5,
+            "Qe": 13.0,
+            "ys": 5.544329323094121,
+            "A_total": 28.0,
+            "Q_total": 87.392412,
+            "V_media_seccion": 3.1211575714285713,
+            "R_informativo": 1.2
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m",
+            "A_total": "m2 (control)",
+            "Q_total": "m3/s (control)",
+            "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+            "R_informativo": "m (no interviene en Froehlich)"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          },
+          "supuestos": []
+        },
+        "y_s_total": null,
+        "advertencias": [],
+        "escenario": "Q500"
+      },
+      "escenario_diseno": "Q100",
+      "escenario_verificacion": "Q500"
+    },
+    {
+      "lado": "derecho",
+      "y_s_100": 3.2690753245012942,
+      "y_s_500": 4.219461211809008,
+      "y_s_diseno": 4.219461211809008,
+      "Z_lecho_actual": null,
+      "Z_lecho_soc": null,
+      "Z_cim_min": null,
+      "componentes_100": {
+        "lado": "derecho",
+        "condicion": "diseno",
+        "regimen": null,
+        "general": null,
+        "y_sc": null,
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 3.2690753245012942,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 0.82,
+            "K2": 0.984804834864388,
+            "theta": 80.0,
+            "Fr_a": 0.6563533889294405,
+            "L_prima": 1.8,
+            "ya": 1.2222222222222223,
+            "Ve": 2.2727272727272725,
+            "Ae": 2.2,
+            "Qe": 5.0,
+            "ys": 3.2690753245012942,
+            "A_total": 18.0,
+            "Q_total": 55.778,
+            "V_media_seccion": 3.098777777777778,
+            "R_informativo": 0.9
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m",
+            "A_total": "m2 (control)",
+            "Q_total": "m3/s (control)",
+            "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+            "R_informativo": "m (no interviene en Froehlich)"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          },
+          "supuestos": []
+        },
+        "y_s_total": null,
+        "advertencias": [],
+        "escenario": "Q100"
+      },
+      "componentes_500": {
+        "lado": "derecho",
+        "condicion": "verificacion",
+        "regimen": null,
+        "general": null,
+        "y_sc": null,
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 4.219461211809008,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 0.82,
+            "K2": 0.984804834864388,
+            "theta": 80.0,
+            "Fr_a": 0.7099014056430265,
+            "L_prima": 2.0,
+            "ya": 1.6,
+            "Ve": 2.8125,
+            "Ae": 3.2,
+            "Qe": 9.0,
+            "ys": 4.219461211809008,
+            "A_total": 28.0,
+            "Q_total": 87.392412,
+            "V_media_seccion": 3.1211575714285713,
+            "R_informativo": 1.2
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m",
+            "A_total": "m2 (control)",
+            "Q_total": "m3/s (control)",
+            "V_media_seccion": "m/s (informativa; no sustituye Ve)",
+            "R_informativo": "m (no interviene en Froehlich)"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          },
+          "supuestos": []
+        },
+        "y_s_total": null,
+        "advertencias": [],
+        "escenario": "Q500"
+      },
+      "escenario_diseno": "Q100",
+      "escenario_verificacion": "Q500"
+    }
+  ],
+  "geotecnia": {
+    "items": [
+      {
+        "item": "Evaluación geotécnica",
+        "hidraulica": "No realizada",
+        "geotecnia": "Se requieren datos de cimentación y exploración",
+        "compatible": false,
+        "accion": ""
+      }
+    ],
+    "compatible_global": false,
+    "conclusion": "Geotecnia NO EVALUADA: este resultado sólo estima socavación; no determina una cimentación apta."
+  },
+  "advertencias_globales": [
+    "ESCENARIO PRELIMINAR: incluye supuestos; no constituye aprobación del diseño.",
+    "SOLO SOCAVACIÓN LOCAL por Froehlich en estribos. Socavación general, contracción y largo plazo NO EVALUADOS, no son cero. No determina socavación total, cota del lecho final ni profundidad de cimentación.",
+    "DATOS DE PRUEBA SINTÉTICOS: no usar para diseño ni construcción."
+  ],
+  "pilares_finales": [],
+  "auditoria": {
+    "version_metodo": "MTC-LL-2.2",
+    "modo": "preliminar",
+    "entrada_sha256": "c4a31e6ae2915b6e907563e488683c9c61dba487ee961751b0a5ae00ed96e572",
+    "entrada": {
+      "nombre": "Demo",
+      "Q100": 55.778,
+      "Q500": 87.392412,
+      "datos_prueba": true,
+      "entrada_hidraulica": "hec_ras",
+      "metodo_calculo": "froehlich",
+      "fuentes": {
+        "hidrologia": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+      },
+      "justificacion_sin_desbordamiento": "EX-F: se omite sólo en esta prueba de software; no es justificación de proyecto.",
+      "estribo_izquierdo": {
+        "lado": "izquierdo",
+        "q100": {
+          "area_hidraulica": 18.0,
+          "radio_hidraulico": 0.9,
+          "Ae": 3.0,
+          "Qe": 8.0,
+          "L_obstruida": 2.0,
+          "fuentes": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          }
+        },
+        "q500": {
+          "area_hidraulica": 28.0,
+          "radio_hidraulico": 1.2,
+          "Ae": 4.5,
+          "Qe": 13.0,
+          "L_obstruida": 2.5,
+          "fuentes": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          }
+        },
+        "L_prima": 2.0,
+        "Ae": 3.0,
+        "forma": "muro_vertical",
+        "angulo_ataque": 90.0
+      },
+      "estribo_derecho": {
+        "lado": "derecho",
+        "q100": {
+          "area_hidraulica": 18.0,
+          "radio_hidraulico": 0.9,
+          "Ae": 2.2,
+          "Qe": 5.0,
+          "L_obstruida": 1.8,
+          "fuentes": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          }
+        },
+        "q500": {
+          "area_hidraulica": 28.0,
+          "radio_hidraulico": 1.2,
+          "Ae": 3.2,
+          "Qe": 9.0,
+          "L_obstruida": 2.0,
+          "fuentes": {
+            "hidraulica": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "geometria": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real",
+            "local": "EX-F: ejemplo sintético de software; NO resultado de un modelo HEC-RAS real"
+          }
+        },
+        "L_prima": 1.8,
+        "Ae": 2.2,
+        "forma": "muro_vertical_aletas_45",
+        "angulo_ataque": 80.0
+      },
+      "geotecnia": {
+        "evaluar": false,
+        "hay_estrato_competente": false
+      }
+    },
+    "documentos": {
+      "HHD": {
+        "archivo": "Manual de hidrologiay drenaje MTC.pdf",
+        "sha256": "0a1bdcd7c94016760642de91baf4d6e317e4cc85c529dfefae9a6bf76c8dcd88",
+        "ruta": "C:\\Users\\CARMEN\\Desktop\\PROYECTOS\\SOCAVACION\\normativos\\Manual de hidrologiay drenaje MTC.pdf",
+        "sha256_actual": "0a1bdcd7c94016760642de91baf4d6e317e4cc85c529dfefae9a6bf76c8dcd88",
+        "coincide": true
+      },
+      "MP": {
+        "archivo": "Manual de Puentes MTC 2018 (PGA).pdf",
+        "sha256": "46d37849141b3acef44bdae112496dafbb5d6813dc008d5495c2f2bb760936b1",
+        "ruta": "C:\\Users\\CARMEN\\Desktop\\PROYECTOS\\SOCAVACION\\normativos\\Manual de Puentes MTC 2018 (PGA).pdf",
+        "sha256_actual": "46d37849141b3acef44bdae112496dafbb5d6813dc008d5495c2f2bb760936b1",
+        "coincide": true
+      }
+    },
+    "referencias": {
+      "F92": "HHD §b.3.2.4, ecuaciones 92-94, Tabla 27, páginas impresas/PDF 148-151",
+      "MP123a": "MP artículo 1.2.3a, página impresa 47 / PDF 51: escenarios y suma por apoyo"
+    },
+    "convencion": "y_sl=Froehlich; general, contraccion, y_s_total y cotas = null (NO EVALUADOS). Envolventes sólo locales.",
+    "estado_limite": {
+      "diseno": "Envolvente LOCAL Q100/Qot, evaluación parcial",
+      "verificacion": "Envolvente LOCAL Q500/Qot, evaluación parcial"
+    },
+    "alcance": "SOLO SOCAVACIÓN LOCAL por Froehlich en estribos. Socavación general, contracción y largo plazo NO EVALUADOS, no son cero. No determina socavación total, cota del lecho final ni profundidad de cimentación.",
+    "archivos_codigo": {
+      "__init__.py": "0551b4fccf8669d94e101eea7a8ccfa0fa4a0a1cff438b1c5314e1ef5713974e",
+      "__main__.py": "5bc48a291ef80012471582425ece1033d1121284706e979b0948d334c2a87c2c",
+      "cli/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cli/app.py": "01d3eb78dd8c266e80fb27179056e87ab1d9927fee94dcddb3aa6ade25ddcfa2",
+      "cli/ascii_tables.py": "8027557e79561db3c9f33fecfb86f420b636210bf015fb1d9a7926540b19e0df",
+      "cli/display.py": "59e8feb662bd46aa2575c585d8ff8c1a765a77a080c7427fc6c37ecd2caf02e7",
+      "core/__init__.py": "956ec77a90a80e17f9d5a04ef43bcec90021526882794406332d71b146d1c9c7",
+      "core/contraction.py": "c473427dc16fa0ad4ff24054670e18d7133347353f1e1539cd0c320ea983e850",
+      "core/elevations.py": "7c2a11a334810c7faeb39b5f876a992385f09ed2699118d5ce9d1b7d347afa30",
+      "core/general/__init__.py": "5b6917b73b73e672500001b06f5bbb22cc5bffab17137c980f156b6011565aa8",
+      "core/general/aggregator.py": "d8964958c64db97640ae286680064bc5b90ece1453367c66d84681ce652e5e5f",
+      "core/general/lacey.py": "89ce6d7ec1cf2fb317167406d04bd80ad4c1a627358e41ebcdb93849001473a6",
+      "core/general/lischtvan.py": "3bef6b4c75800409195b2dcc0d73445f815b210e0071bcbbb885fe83988bd9f4",
+      "core/general/neill.py": "07db521e50fbdc888f1f3b78c3b1c65b5661864dc6a8f7e898d39340ee53cb70",
+      "core/interpolation.py": "a303c39864074d277c4b87b79dd6023d06c1538d4207536819f0b87e5c6c2fa3",
+      "core/local_abutment.py": "cfdc063c8027bd63bc8be498d3f27fa4c73a19ccedecd4809337ed616b5a281d",
+      "core/local_pier.py": "fa72b66b4734739c9440b281d3729cfe9e9e99840bc28f6fbee73191d0d147fb",
+      "core/long_term.py": "11d86e7cfb7fc7efb223db534277b696621b0c9a72b0502c64fa8e52fdc28808",
+      "core/pipeline.py": "643f15306556a5c2770728f20ad1b73239274a4be9c8a3452fa19feb785cb601",
+      "core/regime.py": "c82de72690c562ebb7cbda64431a19402c68dc4139a76ea11e10c8716f661f4b",
+      "core/totals.py": "cd67f499f65f607776aee4d37d0c5c57c3da8074f6abded29362745de4484d72",
+      "domain/__init__.py": "411a0ffe1b7a7dfdf298aba1c0e7596326b972aefb44bd76f50a4d975878152d",
+      "domain/enums.py": "3d2310126b6b2748d7a168823286e15dd6f78999209d8e5c8f12bb4f6417b494",
+      "domain/models.py": "738e91a10bbe719bafe7c7b697499b80006d20786f6958a7f111d9264ffc823e",
+      "domain/observations.py": "fd60daeeb1be161108e9b9547da955a8ea67009a708a2c113f0572f38e33515e",
+      "domain/results.py": "4cd843d2fc3fd5b7d264b523d372d366c6f11e39bbef97c8dd5cc401a0e8de92",
+      "geotech/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "geotech/compatibility.py": "f459e10a8c2090f7c886b3830c73c0036fb3cf7a53c266263989cf63779f83f2",
+      "input/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "input/demo.py": "5e199295f2b1cfc1a9a68bd3057a7f9c2901ba05ee94b98637196a6b4c0439b4",
+      "input/hec_ras.py": "0b5948e1978d264049a9c8510ac489cdfa2ab2d0cd6f2600ef5e24c0b9b13440",
+      "input/loader.py": "40c37d9b8453b1a0768640fdac11062cc7ea024698c27c9527d9c57386968020",
+      "input/prompts.py": "7810604c3530657884d0df98f286e0a2a8adcc59536b9c6db838ade734d96258",
+      "input/validator.py": "0a0f64b3ece56c5d60cf523c218e1b0b54ecd12f76a7185a5bdced17a15d2806",
+      "input/wizard.py": "731270e87d9f7271f760578080f1678ebe0d11bc5f62e3b4b7fe80b8e47d5a3a",
+      "input/wizard_basic.py": "65753ca45574592deb6093380e8826761fb9752bd025142864905efeb0f97579",
+      "input/wizard_froehlich.py": "e948a3ec64e18d32df01e178b31eb59db4929e3150ab4fde30a42f0eb77d87b5",
+      "input/wizard_hydraulics.py": "70583d59dca624e169b8cc8ebc42d5ca10f0b4bc1757cee7be5e476c17a89bf7",
+      "normative/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normative/constants.py": "f6796e81f8474c09a5cd0161e5060061d6e5a265fa75ffbf4d1d821211bc35c4",
+      "normative/mu.py": "af526c66be691358a42cc3d4265f3c8cfac62617faf90fe4008dd3d5134f0b35",
+      "normative/references.py": "fc1d3d154c10035c935944b737da314a38ffd43178e68594fe734a6352d4a869",
+      "normative/tables.py": "a189c04658fe174cb5e59ca7ef9e0c0f488c29212b6296c3cce7b110fac146a5",
+      "report/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report/builder.py": "f8e6faacbbbbcc0ccab0ff4d0d2fedf871f7b503053aada9dd61048c171e5fc0",
+      "report/docx_builder.py": "71fd4aae5ca0e0b0c4ee77099ae27fc9439c302a0839ec0236392e4e6c169926",
+      "report/docx_calcs.py": "6687f288689c5b93a9a6c3e85387de6af42a4f9bdbeb1c3c863eecfdc4571572",
+      "report/docx_format.py": "1c7fa64b038713d941b727c7ec3c5300ea23702307ce2616716756d6ed7c95e8",
+      "report/docx_math.py": "ad0911b0204ce3642af48b5e63c90f056332c3e0eb38a809f8597d139fca20f7",
+      "report/docx_sections.py": "c759d336968dc920c65634d65092b1413ccc765c3ecc18d0086972a14a28b5ff",
+      "report/docx_style.py": "43e34a5fac736dc0ddc26d2328aed72f3673800d367efabd42e24651983c4261",
+      "report/trace.py": "addd95f7eab446d701bec985546f72505a7d05fc4808e48813260e663ac81c5a"
+    },
+    "fuente_codigo_sha256": "4233762536e179027af6675555f85c64d7c6889b380f22be1e3e6eab7627ded2",
+    "metodo_calculo": "froehlich"
+  }
+}

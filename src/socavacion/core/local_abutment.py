@@ -1,77 +1,56 @@
-"""Socavación local en estribos — Froehlich, HIRE, límites HEC-18."""
-
-from __future__ import annotations
-
+"""Estribos: HHD ec.92-94 y 103; sin topes no sustentados."""
 import math
-
-from socavacion.domain.enums import FormaEstribo, RegimenLecho
 from socavacion.domain.models import CondicionHidraulica, Estribo
 from socavacion.domain.results import ComponenteSocavacion, RegimenResult
-from socavacion.normative.constants import G, LIMITE_FROEHLICH
+from socavacion.normative.constants import G
 from socavacion.normative.tables import K1_ESTRIBO
 
 
 def k2_angulo(theta_grados: float) -> float:
-    """K2 = (θ/90)^0.13"""
     return (theta_grados / 90.0) ** 0.13
 
 
-def _froehlich(ya: float, L_prima: float, Fr_a: float, K1: float, K2: float) -> float:
-    ratio = L_prima / ya
-    return ya * (2.27 * K1 * K2 * (ratio ** 0.43) * (Fr_a ** 0.61) + 1.0)
+def _froehlich(ya, L_prima, Fr_a, K1, K2):
+    return ya * (2.27*K1*K2*(L_prima/ya)**0.43*Fr_a**0.61 + 1)
 
 
-def _hire(y1: float, Fr: float, K1: float, K2: float) -> float:
-    return y1 * 4.0 * (Fr ** (1 / 3)) * (K1 / 0.55) * K2
+def _hire(y1, Fr, K1, K2):
+    return 4*y1*(Fr**0.33)*(K1/0.55)*K2
 
 
-def _limite_hec18(ya: float, K1: float, K2: float, regimen: RegimenLecho) -> float:
-    factor = 2.4 if regimen == RegimenLecho.LECHO_VIVO else 2.2
-    return factor * K1 * (K2 / 0.55) * ya
-
-
-def calcular_local_estribo(
-    estribo: Estribo,
-    hid: CondicionHidraulica,
-    regimen: RegimenResult,
-) -> tuple[ComponenteSocavacion, list[str]]:
-    advertencias: list[str] = []
-    K1 = K1_ESTRIBO[estribo.forma]
-    K2 = k2_angulo(estribo.angulo_ataque)
-    ya = hid.y1
-    ya_obstruida = estribo.Ae / max(estribo.L_prima, 1e-6)
-    ya_eff = max(ya_obstruida, ya)
-    Ve = hid.Q1 / max(estribo.Ae, 1e-6) if estribo.Ae > 0 else hid.V1
-    Fr_a = Ve / math.sqrt(G * ya_eff) if ya_eff > 0 else 0.0
-
-    ratio_ly = estribo.L_prima / ya_eff if ya_eff > 0 else 0.0
-    if ratio_ly <= LIMITE_FROEHLICH:
-        y_sl = _froehlich(ya_eff, estribo.L_prima, Fr_a, K1, K2)
-        metodo = "Froehlich HEC-18"
-        formula = "ysl/ya = 2.27*K1*K2*(L'/ya)^0.43*Fr_a^0.61 + 1"
+def calcular_local_estribo(estribo: Estribo, hid: CondicionHidraulica,
+                          regimen: RegimenResult | None):
+    supuestos = []
+    K1, K2 = K1_ESTRIBO[estribo.forma], k2_angulo(estribo.angulo_ataque)
+    L = hid.L_obstruida if hid.L_obstruida is not None else estribo.L_prima
+    Ae = hid.Ae if hid.Ae is not None else estribo.Ae
+    if estribo.metodo_local == 'hire':
+        if not estribo.penetra_cauce or hid.h_pie is None or hid.V_pie is None:
+            raise ValueError('HIRE requiere penetra_cauce y h_pie/V_pie por avenida (HHD pp.156-157)')
+        ya, Ve = hid.h_pie, hid.V_pie
+        if L/ya <= 25:
+            raise ValueError('HIRE: aplicación restringida en esta implementación a L/h > 25')
+        Fr = Ve/math.sqrt(G*ya)
+        ys = _hire(ya, Fr, K1, K2)
+        metodo, formula, ref = 'HIRE MTC HHD', 'ys=4*h_pie*(Kf/0.55)*Ktheta*Fr^0.33', 'H103'
     else:
-        y_sl = _hire(hid.y1, regimen.Fr, K1, K2)
-        metodo = "HIRE HEC-18"
-        formula = "ysl/y1 = 4*Fr^(1/3)*K1/0.55*K2"
-
-    limite = _limite_hec18(ya_eff, K1, K2, regimen.regimen)
-    if y_sl > limite:
-        advertencias.append(f"Límite HEC-18 aplicado ({limite:.3f} m)")
-        y_sl = limite
-
-    return (
-        ComponenteSocavacion(
-            metodo=metodo,
-            valor=y_sl,
-            formula=formula,
-            intermedios={
-                "K1": K1,
-                "K2": K2,
-                "Fr_a": Fr_a,
-                "L_prima": estribo.L_prima,
-                "ya": ya_eff,
-                "limite": limite,
-            },
-        ),
-        advertencias,
-    )
+        ya = Ae/L if Ae > 0 else hid.y1
+        if Ae <= 0:
+            supuestos.append('Ae=0: h_e=y1 y Ve=V1, aproximación preliminar; falta definir flujo obstruido.')
+        if hid.Qe is not None and Ae > 0:
+            Ve = hid.Qe/Ae
+        else:
+            Ve = hid.V1
+            supuestos.append('Qe no disponible: Ve=V1 supuesto preliminar; Q1 no sustituye Qe.')
+        Fr = Ve/math.sqrt(G*ya)
+        ys = _froehlich(ya, L, Fr, K1, K2)
+        metodo, formula, ref = 'Froehlich HEC-18 / MTC HHD', 'ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae', 'F92'
+    return ComponenteSocavacion(
+        metodo=metodo, valor=ys, formula=formula,
+        intermedios={'K1':K1,'K2':K2,'theta':estribo.angulo_ataque,'Fr_a':Fr,'L_prima':L,'ya':ya,'Ve':Ve,'Ae':Ae,
+                     'Qe':hid.Qe if hid.Qe is not None else Ve*Ae, 'ys':ys},
+        notas=('HIRE: selección explícita; restricción L/h>25 de esta implementación.' if estribo.metodo_local == 'hire'
+               else 'Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.'),
+        referencias=[ref], supuestos=supuestos, fuentes_datos=dict(hid.fuentes),
+        unidades={'K1':'1','K2':'1','theta':'grados','Fr_a':'1','L_prima':'m','ya':'m','Ve':'m/s','Ae':'m2','Qe':'m3/s','ys':'m'},
+    ), supuestos

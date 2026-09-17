@@ -1,0 +1,103 @@
+# CASO SINTÉTICO REPRODUCIBLE: no representa un puente aprobado ni datos de campo.
+# Las referencias EX-* se explican en normativos/METODO_SOCAVACION_MTC_TRAZABLE.md.
+# Modo trazable = integridad de registro, NO certificación de datos ni seguridad.
+proyecto:
+  nombre: "Ejemplo sintético MTC trazable"
+  modo: trazable
+  material_lecho: granular
+  flujo: libre
+  lecho_homogeneo: true
+  Q100: 55.778
+  Q500: 87.392412
+  Q_ot: null
+  justificacion_sin_desbordamiento: "EX-01: se excluye desbordamiento sólo para este ensayo de software; estudiar rasante en proyecto real."
+  fuentes:
+    hidrologia: "EX-01: caudales de ensayo tomados del escenario C=0.55 aportado por el usuario, sin validar hidrología."
+    topografia: "EX-02: sección sintética rectangular B=12.5 m; cotas inventadas para verificar operaciones."
+    geotecnia: "EX-03: lecho granular homogéneo ficticio; Dm=2.95 mm y D50=2.5 mm independientes."
+    largo_plazo: "EX-04: LP=0.20 m supuesto sintético independiente de LL, no predicción morfológica."
+cauce:
+  tipo: degradacion
+  y_sg_lp: 0.20
+  notas: "EX-04: dato sintético; no utilizar para cimentación real."
+estribo_izquierdo:
+  lado: izquierdo
+  D50_mm: 2.5
+  Z_lecho: 100.0
+  forma: muro_vertical
+  angulo_ataque: 90.0
+  L_prima: 2.0
+  Ae: 2.0
+  metodo_local: froehlich
+  q100: &h100
+    y1: 1.1
+    V1: 4.05658181818
+    W1: 12.5
+    W2: 12.5
+    y0: 1.1
+    Sf: 0.045
+    beta: 1.00
+    luz_libre: 12.5
+    V_mu: 4.05658181818
+    phi: 1.00
+    exponente_x: 0.38
+    Dm_mm: 2.95
+    h_local: 1.1
+    Q_ll: 55.778
+    B_ll: 12.5
+    h_m_ll: 1.1
+    Ae: 2.2
+    Qe: 8.92448
+    L_obstruida: 2.0
+    fuentes: &fuentes_h
+      hidraulica: "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente."
+      geometria: "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo."
+      granulometria: "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm."
+      beta: "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada."
+      exponente_x: "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real."
+      phi: "EX-06: phi=1 supuesto, sin estudio de carga sólida real."
+      luz_libre: "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y)."
+      cierre_alpha: "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección."
+      local: "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo."
+      pilar: "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+  q500: &h500
+    <<: *h100
+    y1: 1.371399
+    V1: 5.09800062564
+    V_mu: 5.09800062564
+    y0: 1.371399
+    beta: 1.05
+    h_local: 1.371399
+    Q_ll: 87.392412
+    h_m_ll: 1.371399
+    Ae: 2.742798
+    Qe: 13.98278592
+estribo_derecho:
+  lado: derecho
+  D50_mm: 2.5
+  Z_lecho: 100.0
+  forma: muro_vertical
+  angulo_ataque: 90.0
+  L_prima: 2.0
+  Ae: 2.0
+  metodo_local: froehlich
+  q100: *h100
+  q500: *h500
+pilares:
+  - nombre: "P1 sintético"
+    ancho_a: 0.8
+    longitud_l: 3.0
+    forma: circular
+    angulo_ataque: 10.0
+    D50_mm: 2.5
+    Z_lecho: 99.8
+    K3: 1.1
+    K4: 1.0
+    q100: *h100
+    q500: *h500
+geotecnia:
+  cota_sondaje_min: 85.0
+  hay_estrato_competente: true
+  roca_resistente: false
+  tipo_cimentacion: superficial
+  descripcion_estrato: "EX-03: estrato ficticio, sin perforación ni ensayos reales."

@@ -1,0 +1,2130 @@
+{
+  "proyecto_nombre": "Ejemplo sintético MTC trazable",
+  "Q_diseno": 55.778,
+  "Q_verif": 87.392412,
+  "caudales": [
+    {
+      "condicion": "diseno",
+      "Q": 55.778,
+      "estribos": [
+        {
+          "lado": "izquierdo",
+          "condicion": "diseno",
+          "regimen": {
+            "regimen": "lecho_vivo",
+            "Vc": 0.8535640186353324,
+            "V1": 4.05658181818,
+            "Fr": 1.2348931839460913,
+            "V_star": 0.6968464680257769,
+            "omega": null,
+            "k1_contraccion": null
+          },
+          "general": {
+            "y_sg_lp": 0.2,
+            "y_sg_lischtvan": {
+              "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+              "valor": 2.333798474085304,
+              "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+              "intermedios": {
+                "Q": 55.778,
+                "h_m": 1.1,
+                "B": 12.5,
+                "Dm_mm": 2.95,
+                "beta": 1.0,
+                "mu": 0.8833333333333333,
+                "phi": 1.0,
+                "x": 0.38,
+                "alpha_c": 4.30963507474881,
+                "Hs": 3.4337984740853043,
+                "ds": 2.333798474085304,
+                "h": 1.1,
+                "alpha": 3.806844316028115,
+                "descenso_sin_truncar": 2.333798474085304,
+                "luz_libre": 12.5,
+                "V_mu": 4.05658181818
+              },
+              "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+              "referencias": [
+                "LL59",
+                "MU13"
+              ],
+              "unidades": {
+                "Q": "m3/s",
+                "h_m": "m",
+                "h": "m",
+                "B": "m",
+                "Dm_mm": "mm",
+                "beta": "1",
+                "mu": "1",
+                "phi": "1",
+                "x": "1 (z granular)",
+                "alpha": "m^(1/3)/s (cierre SI)",
+                "alpha_c": "m^(1/3)/s (cierre SI)",
+                "Hs": "m",
+                "ds": "m",
+                "descenso_sin_truncar": "m",
+                "luz_libre": "m",
+                "V_mu": "m/s"
+              },
+              "fuentes_datos": {
+                "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+                "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+                "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+                "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+                "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+                "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+                "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+                "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+                "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+                "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+              },
+              "supuestos": [
+                "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+              ]
+            },
+            "y_sg_neill": {
+              "metodo": "No evaluado (legado Neill)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_lacey": {
+              "metodo": "No evaluado (legado Lacey)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_avenida": 2.333798474085304,
+            "y_sg_total": 2.5337984740853043,
+            "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+          },
+          "y_sc": {
+            "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+            "valor": 0.0,
+            "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+            "intermedios": {
+              "mu": 0.8833333333333333
+            },
+            "notas": "Evita doble conteo de la contracción del puente.",
+            "referencias": [
+              "LL59",
+              "MP123a"
+            ],
+            "unidades": {
+              "mu": "1"
+            },
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 4.772455279055413,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.0,
+              "theta": 90.0,
+              "Fr_a": 1.2348931839466446,
+              "L_prima": 2.0,
+              "ya": 1.1,
+              "Ve": 4.056581818181818,
+              "Ae": 2.2,
+              "Qe": 8.92448,
+              "ys": 4.772455279055413
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": []
+          },
+          "y_s_total": 7.306253753140718,
+          "advertencias": [
+            "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+          ],
+          "escenario": "Q100"
+        },
+        {
+          "lado": "derecho",
+          "condicion": "diseno",
+          "regimen": {
+            "regimen": "lecho_vivo",
+            "Vc": 0.8535640186353324,
+            "V1": 4.05658181818,
+            "Fr": 1.2348931839460913,
+            "V_star": 0.6968464680257769,
+            "omega": null,
+            "k1_contraccion": null
+          },
+          "general": {
+            "y_sg_lp": 0.2,
+            "y_sg_lischtvan": {
+              "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+              "valor": 2.333798474085304,
+              "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+              "intermedios": {
+                "Q": 55.778,
+                "h_m": 1.1,
+                "B": 12.5,
+                "Dm_mm": 2.95,
+                "beta": 1.0,
+                "mu": 0.8833333333333333,
+                "phi": 1.0,
+                "x": 0.38,
+                "alpha_c": 4.30963507474881,
+                "Hs": 3.4337984740853043,
+                "ds": 2.333798474085304,
+                "h": 1.1,
+                "alpha": 3.806844316028115,
+                "descenso_sin_truncar": 2.333798474085304,
+                "luz_libre": 12.5,
+                "V_mu": 4.05658181818
+              },
+              "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+              "referencias": [
+                "LL59",
+                "MU13"
+              ],
+              "unidades": {
+                "Q": "m3/s",
+                "h_m": "m",
+                "h": "m",
+                "B": "m",
+                "Dm_mm": "mm",
+                "beta": "1",
+                "mu": "1",
+                "phi": "1",
+                "x": "1 (z granular)",
+                "alpha": "m^(1/3)/s (cierre SI)",
+                "alpha_c": "m^(1/3)/s (cierre SI)",
+                "Hs": "m",
+                "ds": "m",
+                "descenso_sin_truncar": "m",
+                "luz_libre": "m",
+                "V_mu": "m/s"
+              },
+              "fuentes_datos": {
+                "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+                "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+                "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+                "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+                "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+                "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+                "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+                "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+                "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+                "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+              },
+              "supuestos": [
+                "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+              ]
+            },
+            "y_sg_neill": {
+              "metodo": "No evaluado (legado Neill)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_lacey": {
+              "metodo": "No evaluado (legado Lacey)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_avenida": 2.333798474085304,
+            "y_sg_total": 2.5337984740853043,
+            "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+          },
+          "y_sc": {
+            "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+            "valor": 0.0,
+            "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+            "intermedios": {
+              "mu": 0.8833333333333333
+            },
+            "notas": "Evita doble conteo de la contracción del puente.",
+            "referencias": [
+              "LL59",
+              "MP123a"
+            ],
+            "unidades": {
+              "mu": "1"
+            },
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 4.772455279055413,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.0,
+              "theta": 90.0,
+              "Fr_a": 1.2348931839466446,
+              "L_prima": 2.0,
+              "ya": 1.1,
+              "Ve": 4.056581818181818,
+              "Ae": 2.2,
+              "Qe": 8.92448,
+              "ys": 4.772455279055413
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": []
+          },
+          "y_s_total": 7.306253753140718,
+          "advertencias": [
+            "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+          ],
+          "escenario": "Q100"
+        }
+      ],
+      "pilares": [
+        {
+          "nombre": "P1 sintético",
+          "condicion": "diseno",
+          "y_sp": {
+            "metodo": "CSU MTC HHD / USACE",
+            "valor": 2.9667188953980226,
+            "formula": "ys=2*K1*K2*K3*K4*a^0.65*h^0.35*Fr^0.43; K2=(cos(theta)+min(l/a,12)*sin(theta))^0.65",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.37707358045449,
+              "K3": 1.1,
+              "K4": 1.0,
+              "a": 0.8,
+              "l_a": 3.75,
+              "theta": 10.0,
+              "h": 1.1,
+              "V": 4.05658181818,
+              "Fr1": 1.2348931839460913,
+              "ys": 2.9667188953980226
+            },
+            "notas": "HHD ec.81 imprime h/a; se implementa a/h de la fuente CSU USACE ec.10-6.",
+            "referencias": [
+              "CSU81",
+              "CSU_CORRECCION",
+              "CSU_ALCANCE"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "K3": "1",
+              "K4": "1",
+              "a": "m",
+              "l_a": "1",
+              "theta": "grados",
+              "h": "m",
+              "V": "m/s",
+              "Fr1": "1",
+              "ys": "m"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura.",
+              "K4": "K4=1: sin reducción por armadura"
+            },
+            "supuestos": [
+              "CSU sin truncamiento, decisión conservadora: USACE describe límites 2.4a/3a según Fr para nariz redonda alineada; revisar su aplicabilidad, no imponerlos a todo pilar."
+            ]
+          },
+          "regimen": "lecho_vivo",
+          "general": {
+            "y_sg_lp": 0.2,
+            "y_sg_lischtvan": {
+              "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+              "valor": 2.333798474085304,
+              "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+              "intermedios": {
+                "Q": 55.778,
+                "h_m": 1.1,
+                "B": 12.5,
+                "Dm_mm": 2.95,
+                "beta": 1.0,
+                "mu": 0.8833333333333333,
+                "phi": 1.0,
+                "x": 0.38,
+                "alpha_c": 4.30963507474881,
+                "Hs": 3.4337984740853043,
+                "ds": 2.333798474085304,
+                "h": 1.1,
+                "alpha": 3.806844316028115,
+                "descenso_sin_truncar": 2.333798474085304,
+                "luz_libre": 12.5,
+                "V_mu": 4.05658181818
+              },
+              "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+              "referencias": [
+                "LL59",
+                "MU13"
+              ],
+              "unidades": {
+                "Q": "m3/s",
+                "h_m": "m",
+                "h": "m",
+                "B": "m",
+                "Dm_mm": "mm",
+                "beta": "1",
+                "mu": "1",
+                "phi": "1",
+                "x": "1 (z granular)",
+                "alpha": "m^(1/3)/s (cierre SI)",
+                "alpha_c": "m^(1/3)/s (cierre SI)",
+                "Hs": "m",
+                "ds": "m",
+                "descenso_sin_truncar": "m",
+                "luz_libre": "m",
+                "V_mu": "m/s"
+              },
+              "fuentes_datos": {
+                "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+                "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+                "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+                "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+                "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+                "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+                "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+                "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+                "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+                "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+              },
+              "supuestos": [
+                "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+              ]
+            },
+            "y_sg_neill": {
+              "metodo": "No evaluado (legado Neill)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_lacey": {
+              "metodo": "No evaluado (legado Lacey)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_avenida": 2.333798474085304,
+            "y_sg_total": 2.5337984740853043,
+            "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+          },
+          "y_s_total": 5.500517369483327,
+          "Z_lecho_soc": 94.29948263051666,
+          "escenario": "Q100"
+        }
+      ],
+      "escenario": "Q100"
+    },
+    {
+      "condicion": "verificacion",
+      "Q": 87.392412,
+      "estribos": [
+        {
+          "lado": "izquierdo",
+          "condicion": "verificacion",
+          "regimen": {
+            "regimen": "lecho_vivo",
+            "Vc": 0.8855191481416341,
+            "V1": 5.09800062564,
+            "Fr": 1.3898997170668974,
+            "V_star": 0.7780771739037202,
+            "omega": null,
+            "k1_contraccion": null
+          },
+          "general": {
+            "y_sg_lp": 0.2,
+            "y_sg_lischtvan": {
+              "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+              "valor": 3.217752592825569,
+              "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+              "intermedios": {
+                "Q": 87.392412,
+                "h_m": 1.371399,
+                "B": 12.5,
+                "Dm_mm": 2.95,
+                "beta": 1.05,
+                "mu": 0.8833333333333333,
+                "phi": 1.0,
+                "x": 0.38,
+                "alpha_c": 4.675550077969309,
+                "Hs": 4.589151592825569,
+                "ds": 3.217752592825569,
+                "h": 1.371399,
+                "alpha": 4.130069235539556,
+                "descenso_sin_truncar": 3.217752592825569,
+                "luz_libre": 12.5,
+                "V_mu": 5.09800062564
+              },
+              "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+              "referencias": [
+                "LL59",
+                "MU13"
+              ],
+              "unidades": {
+                "Q": "m3/s",
+                "h_m": "m",
+                "h": "m",
+                "B": "m",
+                "Dm_mm": "mm",
+                "beta": "1",
+                "mu": "1",
+                "phi": "1",
+                "x": "1 (z granular)",
+                "alpha": "m^(1/3)/s (cierre SI)",
+                "alpha_c": "m^(1/3)/s (cierre SI)",
+                "Hs": "m",
+                "ds": "m",
+                "descenso_sin_truncar": "m",
+                "luz_libre": "m",
+                "V_mu": "m/s"
+              },
+              "fuentes_datos": {
+                "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+                "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+                "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+                "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+                "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+                "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+                "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+                "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+                "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+                "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+              },
+              "supuestos": [
+                "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+              ]
+            },
+            "y_sg_neill": {
+              "metodo": "No evaluado (legado Neill)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_lacey": {
+              "metodo": "No evaluado (legado Lacey)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_avenida": 3.217752592825569,
+            "y_sg_total": 3.417752592825569,
+            "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+          },
+          "y_sc": {
+            "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+            "valor": 0.0,
+            "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+            "intermedios": {
+              "mu": 0.8833333333333333
+            },
+            "notas": "Evita doble conteo de la contracción del puente.",
+            "referencias": [
+              "LL59",
+              "MP123a"
+            ],
+            "unidades": {
+              "mu": "1"
+            },
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 5.847213223928852,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.0,
+              "theta": 90.0,
+              "Fr_a": 1.3898997170664857,
+              "L_prima": 2.0,
+              "ya": 1.371399,
+              "Ve": 5.09800062563849,
+              "Ae": 2.742798,
+              "Qe": 13.98278592,
+              "ys": 5.847213223928852
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": []
+          },
+          "y_s_total": 9.264965816754422,
+          "advertencias": [
+            "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+          ],
+          "escenario": "Q500"
+        },
+        {
+          "lado": "derecho",
+          "condicion": "verificacion",
+          "regimen": {
+            "regimen": "lecho_vivo",
+            "Vc": 0.8855191481416341,
+            "V1": 5.09800062564,
+            "Fr": 1.3898997170668974,
+            "V_star": 0.7780771739037202,
+            "omega": null,
+            "k1_contraccion": null
+          },
+          "general": {
+            "y_sg_lp": 0.2,
+            "y_sg_lischtvan": {
+              "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+              "valor": 3.217752592825569,
+              "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+              "intermedios": {
+                "Q": 87.392412,
+                "h_m": 1.371399,
+                "B": 12.5,
+                "Dm_mm": 2.95,
+                "beta": 1.05,
+                "mu": 0.8833333333333333,
+                "phi": 1.0,
+                "x": 0.38,
+                "alpha_c": 4.675550077969309,
+                "Hs": 4.589151592825569,
+                "ds": 3.217752592825569,
+                "h": 1.371399,
+                "alpha": 4.130069235539556,
+                "descenso_sin_truncar": 3.217752592825569,
+                "luz_libre": 12.5,
+                "V_mu": 5.09800062564
+              },
+              "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+              "referencias": [
+                "LL59",
+                "MU13"
+              ],
+              "unidades": {
+                "Q": "m3/s",
+                "h_m": "m",
+                "h": "m",
+                "B": "m",
+                "Dm_mm": "mm",
+                "beta": "1",
+                "mu": "1",
+                "phi": "1",
+                "x": "1 (z granular)",
+                "alpha": "m^(1/3)/s (cierre SI)",
+                "alpha_c": "m^(1/3)/s (cierre SI)",
+                "Hs": "m",
+                "ds": "m",
+                "descenso_sin_truncar": "m",
+                "luz_libre": "m",
+                "V_mu": "m/s"
+              },
+              "fuentes_datos": {
+                "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+                "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+                "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+                "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+                "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+                "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+                "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+                "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+                "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+                "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+              },
+              "supuestos": [
+                "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+              ]
+            },
+            "y_sg_neill": {
+              "metodo": "No evaluado (legado Neill)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_lacey": {
+              "metodo": "No evaluado (legado Lacey)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_avenida": 3.217752592825569,
+            "y_sg_total": 3.417752592825569,
+            "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+          },
+          "y_sc": {
+            "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+            "valor": 0.0,
+            "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+            "intermedios": {
+              "mu": 0.8833333333333333
+            },
+            "notas": "Evita doble conteo de la contracción del puente.",
+            "referencias": [
+              "LL59",
+              "MP123a"
+            ],
+            "unidades": {
+              "mu": "1"
+            },
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sl": {
+            "metodo": "Froehlich HEC-18 / MTC HHD",
+            "valor": 5.847213223928852,
+            "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.0,
+              "theta": 90.0,
+              "Fr_a": 1.3898997170664857,
+              "L_prima": 2.0,
+              "ya": 1.371399,
+              "Ve": 5.09800062563849,
+              "Ae": 2.742798,
+              "Qe": 13.98278592,
+              "ys": 5.847213223928852
+            },
+            "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+            "referencias": [
+              "F92"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "theta": "grados",
+              "Fr_a": "1",
+              "L_prima": "m",
+              "ya": "m",
+              "Ve": "m/s",
+              "Ae": "m2",
+              "Qe": "m3/s",
+              "ys": "m"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": []
+          },
+          "y_s_total": 9.264965816754422,
+          "advertencias": [
+            "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+          ],
+          "escenario": "Q500"
+        }
+      ],
+      "pilares": [
+        {
+          "nombre": "P1 sintético",
+          "condicion": "verificacion",
+          "y_sp": {
+            "metodo": "CSU MTC HHD / USACE",
+            "valor": 3.37192999206336,
+            "formula": "ys=2*K1*K2*K3*K4*a^0.65*h^0.35*Fr^0.43; K2=(cos(theta)+min(l/a,12)*sin(theta))^0.65",
+            "intermedios": {
+              "K1": 1.0,
+              "K2": 1.37707358045449,
+              "K3": 1.1,
+              "K4": 1.0,
+              "a": 0.8,
+              "l_a": 3.75,
+              "theta": 10.0,
+              "h": 1.371399,
+              "V": 5.09800062564,
+              "Fr1": 1.3898997170668974,
+              "ys": 3.37192999206336
+            },
+            "notas": "HHD ec.81 imprime h/a; se implementa a/h de la fuente CSU USACE ec.10-6.",
+            "referencias": [
+              "CSU81",
+              "CSU_CORRECCION",
+              "CSU_ALCANCE"
+            ],
+            "unidades": {
+              "K1": "1",
+              "K2": "1",
+              "K3": "1",
+              "K4": "1",
+              "a": "m",
+              "l_a": "1",
+              "theta": "grados",
+              "h": "m",
+              "V": "m/s",
+              "Fr1": "1",
+              "ys": "m"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura.",
+              "K4": "K4=1: sin reducción por armadura"
+            },
+            "supuestos": [
+              "CSU sin truncamiento, decisión conservadora: USACE describe límites 2.4a/3a según Fr para nariz redonda alineada; revisar su aplicabilidad, no imponerlos a todo pilar."
+            ]
+          },
+          "regimen": "lecho_vivo",
+          "general": {
+            "y_sg_lp": 0.2,
+            "y_sg_lischtvan": {
+              "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+              "valor": 3.217752592825569,
+              "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+              "intermedios": {
+                "Q": 87.392412,
+                "h_m": 1.371399,
+                "B": 12.5,
+                "Dm_mm": 2.95,
+                "beta": 1.05,
+                "mu": 0.8833333333333333,
+                "phi": 1.0,
+                "x": 0.38,
+                "alpha_c": 4.675550077969309,
+                "Hs": 4.589151592825569,
+                "ds": 3.217752592825569,
+                "h": 1.371399,
+                "alpha": 4.130069235539556,
+                "descenso_sin_truncar": 3.217752592825569,
+                "luz_libre": 12.5,
+                "V_mu": 5.09800062564
+              },
+              "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+              "referencias": [
+                "LL59",
+                "MU13"
+              ],
+              "unidades": {
+                "Q": "m3/s",
+                "h_m": "m",
+                "h": "m",
+                "B": "m",
+                "Dm_mm": "mm",
+                "beta": "1",
+                "mu": "1",
+                "phi": "1",
+                "x": "1 (z granular)",
+                "alpha": "m^(1/3)/s (cierre SI)",
+                "alpha_c": "m^(1/3)/s (cierre SI)",
+                "Hs": "m",
+                "ds": "m",
+                "descenso_sin_truncar": "m",
+                "luz_libre": "m",
+                "V_mu": "m/s"
+              },
+              "fuentes_datos": {
+                "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+                "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+                "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+                "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+                "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+                "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+                "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+                "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+                "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+                "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+              },
+              "supuestos": [
+                "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+              ]
+            },
+            "y_sg_neill": {
+              "metodo": "No evaluado (legado Neill)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_lacey": {
+              "metodo": "No evaluado (legado Lacey)",
+              "valor": 0,
+              "formula": "No participa en el cálculo MTC",
+              "intermedios": {},
+              "notas": "",
+              "referencias": [],
+              "unidades": {},
+              "fuentes_datos": {},
+              "supuestos": []
+            },
+            "y_sg_avenida": 3.217752592825569,
+            "y_sg_total": 3.417752592825569,
+            "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+          },
+          "y_s_total": 6.789682584888929,
+          "Z_lecho_soc": 93.01031741511107,
+          "escenario": "Q500"
+        }
+      ],
+      "escenario": "Q500"
+    }
+  ],
+  "estribos_finales": [
+    {
+      "lado": "izquierdo",
+      "y_s_100": 7.306253753140718,
+      "y_s_500": 9.264965816754422,
+      "y_s_diseno": 9.264965816754422,
+      "Z_lecho_actual": 100.0,
+      "Z_lecho_soc": 90.73503418324557,
+      "Z_cim_min": 89.73503418324557,
+      "componentes_100": {
+        "lado": "izquierdo",
+        "condicion": "diseno",
+        "regimen": {
+          "regimen": "lecho_vivo",
+          "Vc": 0.8535640186353324,
+          "V1": 4.05658181818,
+          "Fr": 1.2348931839460913,
+          "V_star": 0.6968464680257769,
+          "omega": null,
+          "k1_contraccion": null
+        },
+        "general": {
+          "y_sg_lp": 0.2,
+          "y_sg_lischtvan": {
+            "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+            "valor": 2.333798474085304,
+            "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+            "intermedios": {
+              "Q": 55.778,
+              "h_m": 1.1,
+              "B": 12.5,
+              "Dm_mm": 2.95,
+              "beta": 1.0,
+              "mu": 0.8833333333333333,
+              "phi": 1.0,
+              "x": 0.38,
+              "alpha_c": 4.30963507474881,
+              "Hs": 3.4337984740853043,
+              "ds": 2.333798474085304,
+              "h": 1.1,
+              "alpha": 3.806844316028115,
+              "descenso_sin_truncar": 2.333798474085304,
+              "luz_libre": 12.5,
+              "V_mu": 4.05658181818
+            },
+            "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+            "referencias": [
+              "LL59",
+              "MU13"
+            ],
+            "unidades": {
+              "Q": "m3/s",
+              "h_m": "m",
+              "h": "m",
+              "B": "m",
+              "Dm_mm": "mm",
+              "beta": "1",
+              "mu": "1",
+              "phi": "1",
+              "x": "1 (z granular)",
+              "alpha": "m^(1/3)/s (cierre SI)",
+              "alpha_c": "m^(1/3)/s (cierre SI)",
+              "Hs": "m",
+              "ds": "m",
+              "descenso_sin_truncar": "m",
+              "luz_libre": "m",
+              "V_mu": "m/s"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": [
+              "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+            ]
+          },
+          "y_sg_neill": {
+            "metodo": "No evaluado (legado Neill)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_lacey": {
+            "metodo": "No evaluado (legado Lacey)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_avenida": 2.333798474085304,
+          "y_sg_total": 2.5337984740853043,
+          "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+        },
+        "y_sc": {
+          "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+          "valor": 0.0,
+          "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+          "intermedios": {
+            "mu": 0.8833333333333333
+          },
+          "notas": "Evita doble conteo de la contracción del puente.",
+          "referencias": [
+            "LL59",
+            "MP123a"
+          ],
+          "unidades": {
+            "mu": "1"
+          },
+          "fuentes_datos": {},
+          "supuestos": []
+        },
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 4.772455279055413,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 1.0,
+            "K2": 1.0,
+            "theta": 90.0,
+            "Fr_a": 1.2348931839466446,
+            "L_prima": 2.0,
+            "ya": 1.1,
+            "Ve": 4.056581818181818,
+            "Ae": 2.2,
+            "Qe": 8.92448,
+            "ys": 4.772455279055413
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          },
+          "supuestos": []
+        },
+        "y_s_total": 7.306253753140718,
+        "advertencias": [
+          "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+        ],
+        "escenario": "Q100"
+      },
+      "componentes_500": {
+        "lado": "izquierdo",
+        "condicion": "verificacion",
+        "regimen": {
+          "regimen": "lecho_vivo",
+          "Vc": 0.8855191481416341,
+          "V1": 5.09800062564,
+          "Fr": 1.3898997170668974,
+          "V_star": 0.7780771739037202,
+          "omega": null,
+          "k1_contraccion": null
+        },
+        "general": {
+          "y_sg_lp": 0.2,
+          "y_sg_lischtvan": {
+            "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+            "valor": 3.217752592825569,
+            "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+            "intermedios": {
+              "Q": 87.392412,
+              "h_m": 1.371399,
+              "B": 12.5,
+              "Dm_mm": 2.95,
+              "beta": 1.05,
+              "mu": 0.8833333333333333,
+              "phi": 1.0,
+              "x": 0.38,
+              "alpha_c": 4.675550077969309,
+              "Hs": 4.589151592825569,
+              "ds": 3.217752592825569,
+              "h": 1.371399,
+              "alpha": 4.130069235539556,
+              "descenso_sin_truncar": 3.217752592825569,
+              "luz_libre": 12.5,
+              "V_mu": 5.09800062564
+            },
+            "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+            "referencias": [
+              "LL59",
+              "MU13"
+            ],
+            "unidades": {
+              "Q": "m3/s",
+              "h_m": "m",
+              "h": "m",
+              "B": "m",
+              "Dm_mm": "mm",
+              "beta": "1",
+              "mu": "1",
+              "phi": "1",
+              "x": "1 (z granular)",
+              "alpha": "m^(1/3)/s (cierre SI)",
+              "alpha_c": "m^(1/3)/s (cierre SI)",
+              "Hs": "m",
+              "ds": "m",
+              "descenso_sin_truncar": "m",
+              "luz_libre": "m",
+              "V_mu": "m/s"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": [
+              "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+            ]
+          },
+          "y_sg_neill": {
+            "metodo": "No evaluado (legado Neill)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_lacey": {
+            "metodo": "No evaluado (legado Lacey)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_avenida": 3.217752592825569,
+          "y_sg_total": 3.417752592825569,
+          "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+        },
+        "y_sc": {
+          "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+          "valor": 0.0,
+          "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+          "intermedios": {
+            "mu": 0.8833333333333333
+          },
+          "notas": "Evita doble conteo de la contracción del puente.",
+          "referencias": [
+            "LL59",
+            "MP123a"
+          ],
+          "unidades": {
+            "mu": "1"
+          },
+          "fuentes_datos": {},
+          "supuestos": []
+        },
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 5.847213223928852,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 1.0,
+            "K2": 1.0,
+            "theta": 90.0,
+            "Fr_a": 1.3898997170664857,
+            "L_prima": 2.0,
+            "ya": 1.371399,
+            "Ve": 5.09800062563849,
+            "Ae": 2.742798,
+            "Qe": 13.98278592,
+            "ys": 5.847213223928852
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          },
+          "supuestos": []
+        },
+        "y_s_total": 9.264965816754422,
+        "advertencias": [
+          "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+        ],
+        "escenario": "Q500"
+      },
+      "escenario_diseno": "Q100",
+      "escenario_verificacion": "Q500"
+    },
+    {
+      "lado": "derecho",
+      "y_s_100": 7.306253753140718,
+      "y_s_500": 9.264965816754422,
+      "y_s_diseno": 9.264965816754422,
+      "Z_lecho_actual": 100.0,
+      "Z_lecho_soc": 90.73503418324557,
+      "Z_cim_min": 89.73503418324557,
+      "componentes_100": {
+        "lado": "derecho",
+        "condicion": "diseno",
+        "regimen": {
+          "regimen": "lecho_vivo",
+          "Vc": 0.8535640186353324,
+          "V1": 4.05658181818,
+          "Fr": 1.2348931839460913,
+          "V_star": 0.6968464680257769,
+          "omega": null,
+          "k1_contraccion": null
+        },
+        "general": {
+          "y_sg_lp": 0.2,
+          "y_sg_lischtvan": {
+            "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+            "valor": 2.333798474085304,
+            "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+            "intermedios": {
+              "Q": 55.778,
+              "h_m": 1.1,
+              "B": 12.5,
+              "Dm_mm": 2.95,
+              "beta": 1.0,
+              "mu": 0.8833333333333333,
+              "phi": 1.0,
+              "x": 0.38,
+              "alpha_c": 4.30963507474881,
+              "Hs": 3.4337984740853043,
+              "ds": 2.333798474085304,
+              "h": 1.1,
+              "alpha": 3.806844316028115,
+              "descenso_sin_truncar": 2.333798474085304,
+              "luz_libre": 12.5,
+              "V_mu": 4.05658181818
+            },
+            "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+            "referencias": [
+              "LL59",
+              "MU13"
+            ],
+            "unidades": {
+              "Q": "m3/s",
+              "h_m": "m",
+              "h": "m",
+              "B": "m",
+              "Dm_mm": "mm",
+              "beta": "1",
+              "mu": "1",
+              "phi": "1",
+              "x": "1 (z granular)",
+              "alpha": "m^(1/3)/s (cierre SI)",
+              "alpha_c": "m^(1/3)/s (cierre SI)",
+              "Hs": "m",
+              "ds": "m",
+              "descenso_sin_truncar": "m",
+              "luz_libre": "m",
+              "V_mu": "m/s"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": [
+              "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+            ]
+          },
+          "y_sg_neill": {
+            "metodo": "No evaluado (legado Neill)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_lacey": {
+            "metodo": "No evaluado (legado Lacey)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_avenida": 2.333798474085304,
+          "y_sg_total": 2.5337984740853043,
+          "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+        },
+        "y_sc": {
+          "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+          "valor": 0.0,
+          "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+          "intermedios": {
+            "mu": 0.8833333333333333
+          },
+          "notas": "Evita doble conteo de la contracción del puente.",
+          "referencias": [
+            "LL59",
+            "MP123a"
+          ],
+          "unidades": {
+            "mu": "1"
+          },
+          "fuentes_datos": {},
+          "supuestos": []
+        },
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 4.772455279055413,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 1.0,
+            "K2": 1.0,
+            "theta": 90.0,
+            "Fr_a": 1.2348931839466446,
+            "L_prima": 2.0,
+            "ya": 1.1,
+            "Ve": 4.056581818181818,
+            "Ae": 2.2,
+            "Qe": 8.92448,
+            "ys": 4.772455279055413
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          },
+          "supuestos": []
+        },
+        "y_s_total": 7.306253753140718,
+        "advertencias": [
+          "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+        ],
+        "escenario": "Q100"
+      },
+      "componentes_500": {
+        "lado": "derecho",
+        "condicion": "verificacion",
+        "regimen": {
+          "regimen": "lecho_vivo",
+          "Vc": 0.8855191481416341,
+          "V1": 5.09800062564,
+          "Fr": 1.3898997170668974,
+          "V_star": 0.7780771739037202,
+          "omega": null,
+          "k1_contraccion": null
+        },
+        "general": {
+          "y_sg_lp": 0.2,
+          "y_sg_lischtvan": {
+            "metodo": "Lischtvan-Levediev MTC HHD (general + contracción)",
+            "valor": 3.217752592825569,
+            "formula": "Hs = [alpha_c*h^(5/3)/(0.68*beta*phi*Dm^0.28)]^(1/(1+x)); alpha_c = alpha/mu; alpha = Q/(B*hm^(5/3)) o dato sustentado; ds = max(Hs-h,0)",
+            "intermedios": {
+              "Q": 87.392412,
+              "h_m": 1.371399,
+              "B": 12.5,
+              "Dm_mm": 2.95,
+              "beta": 1.05,
+              "mu": 0.8833333333333333,
+              "phi": 1.0,
+              "x": 0.38,
+              "alpha_c": 4.675550077969309,
+              "Hs": 4.589151592825569,
+              "ds": 3.217752592825569,
+              "h": 1.371399,
+              "alpha": 4.130069235539556,
+              "descenso_sin_truncar": 3.217752592825569,
+              "luz_libre": 12.5,
+              "V_mu": 5.09800062564
+            },
+            "notas": "MTC HHD: ecuación 59 p.108; Dm en mm, no en m como dice la Tabla 29. Incluye contracción del puente; no sumar y_sc de Laursen. Validar beta, mu, phi y Dm con el estudio.",
+            "referencias": [
+              "LL59",
+              "MU13"
+            ],
+            "unidades": {
+              "Q": "m3/s",
+              "h_m": "m",
+              "h": "m",
+              "B": "m",
+              "Dm_mm": "mm",
+              "beta": "1",
+              "mu": "1",
+              "phi": "1",
+              "x": "1 (z granular)",
+              "alpha": "m^(1/3)/s (cierre SI)",
+              "alpha_c": "m^(1/3)/s (cierre SI)",
+              "Hs": "m",
+              "ds": "m",
+              "descenso_sin_truncar": "m",
+              "luz_libre": "m",
+              "V_mu": "m/s"
+            },
+            "fuentes_datos": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            },
+            "supuestos": [
+              "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+            ]
+          },
+          "y_sg_neill": {
+            "metodo": "No evaluado (legado Neill)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_lacey": {
+            "metodo": "No evaluado (legado Lacey)",
+            "valor": 0,
+            "formula": "No participa en el cálculo MTC",
+            "intermedios": {},
+            "notas": "",
+            "referencias": [],
+            "unidades": {},
+            "fuentes_datos": {},
+            "supuestos": []
+          },
+          "y_sg_avenida": 3.217752592825569,
+          "y_sg_total": 3.417752592825569,
+          "metodo_gobernante": "Lischtvan-Levediev MTC HHD (general + contracción)"
+        },
+        "y_sc": {
+          "metodo": "Incluida en Lischtvan-Levediev MTC HHD",
+          "valor": 0.0,
+          "formula": "y_sc independiente = 0; contracción incluida mediante mu",
+          "intermedios": {
+            "mu": 0.8833333333333333
+          },
+          "notas": "Evita doble conteo de la contracción del puente.",
+          "referencias": [
+            "LL59",
+            "MP123a"
+          ],
+          "unidades": {
+            "mu": "1"
+          },
+          "fuentes_datos": {},
+          "supuestos": []
+        },
+        "y_sl": {
+          "metodo": "Froehlich HEC-18 / MTC HHD",
+          "valor": 5.847213223928852,
+          "formula": "ys=he*[2.27*Kf*Ktheta*(L/he)^0.43*Fre^0.61+1]; he=Ae/L; Ve=Qe/Ae",
+          "intermedios": {
+            "K1": 1.0,
+            "K2": 1.0,
+            "theta": 90.0,
+            "Fr_a": 1.3898997170664857,
+            "L_prima": 2.0,
+            "ya": 1.371399,
+            "Ve": 5.09800062563849,
+            "Ae": 2.742798,
+            "Qe": 13.98278592,
+            "ys": 5.847213223928852
+          },
+          "notas": "Se conserva +1 de Froehlich para diseño. Sin recorte 2.4/2.2 no sustentado.",
+          "referencias": [
+            "F92"
+          ],
+          "unidades": {
+            "K1": "1",
+            "K2": "1",
+            "theta": "grados",
+            "Fr_a": "1",
+            "L_prima": "m",
+            "ya": "m",
+            "Ve": "m/s",
+            "Ae": "m2",
+            "Qe": "m3/s",
+            "ys": "m"
+          },
+          "fuentes_datos": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          },
+          "supuestos": []
+        },
+        "y_s_total": 9.264965816754422,
+        "advertencias": [
+          "Cierre alpha=Q/(B*hm^(5/3)); distribución LL homogénea, sustentación requerida."
+        ],
+        "escenario": "Q500"
+      },
+      "escenario_diseno": "Q100",
+      "escenario_verificacion": "Q500"
+    }
+  ],
+  "geotecnia": {
+    "items": [
+      {
+        "item": "Cotas de pilares",
+        "hidraulica": "Lecho y total por pilar",
+        "geotecnia": "Cotas disponibles",
+        "compatible": true,
+        "accion": ""
+      },
+      {
+        "item": "Cota lecho socavado",
+        "hidraulica": "Z_soc min = 90.74 m",
+        "geotecnia": "Sondaje fondo = 85.00 m",
+        "compatible": true,
+        "accion": ""
+      },
+      {
+        "item": "Material residual bajo prisma",
+        "hidraulica": "D50 hidráulico en cauce",
+        "geotecnia": "EX-03: estrato ficticio, sin perforación ni ensayos reales.",
+        "compatible": true,
+        "accion": ""
+      },
+      {
+        "item": "Sondaje alcanza límite zapata (Art. 1.2.4)",
+        "hidraulica": "Z_cim_min = 89.74 m",
+        "geotecnia": "Fondo sondaje 85.00 m; no prueba competencia",
+        "compatible": true,
+        "accion": ""
+      },
+      {
+        "item": "Roca / erosionabilidad",
+        "hidraulica": "Material erosionable asumido",
+        "geotecnia": "No roca resistente declarada",
+        "compatible": true,
+        "accion": ""
+      }
+    ],
+    "compatible_global": true,
+    "conclusion": "Controles geométricos preliminares satisfechos; falta verificar capacidad portante y estabilidad con el prisma retirado."
+  },
+  "advertencias_globales": [],
+  "pilares_finales": [
+    {
+      "nombre": "P1 sintético",
+      "y_s_diseno": 5.500517369483327,
+      "y_s_verificacion": 6.789682584888929,
+      "y_s_max": 6.789682584888929,
+      "Z_lecho_soc": 93.01031741511107,
+      "Z_cim_limite": 92.01031741511107,
+      "escenario_diseno": "Q100",
+      "escenario_verificacion": "Q500"
+    }
+  ],
+  "auditoria": {
+    "version_metodo": "MTC-LL-2.0",
+    "modo": "trazable",
+    "entrada_sha256": "8118e2d2d297163c97417818b4615ba09a4ee8d0616f96dd9a650bf5060b4528",
+    "entrada": {
+      "nombre": "Ejemplo sintético MTC trazable",
+      "Q100": 55.778,
+      "Q500": 87.392412,
+      "Q_ot": null,
+      "modo": "trazable",
+      "material_lecho": "granular",
+      "flujo": "libre",
+      "lecho_homogeneo": true,
+      "fuentes": {
+        "hidrologia": "EX-01: caudales de ensayo tomados del escenario C=0.55 aportado por el usuario, sin validar hidrología.",
+        "topografia": "EX-02: sección sintética rectangular B=12.5 m; cotas inventadas para verificar operaciones.",
+        "geotecnia": "EX-03: lecho granular homogéneo ficticio; Dm=2.95 mm y D50=2.5 mm independientes.",
+        "largo_plazo": "EX-04: LP=0.20 m supuesto sintético independiente de LL, no predicción morfológica."
+      },
+      "justificacion_sin_desbordamiento": "EX-01: se excluye desbordamiento sólo para este ensayo de software; estudiar rasante en proyecto real.",
+      "estribo_izquierdo": {
+        "lado": "izquierdo",
+        "D50_mm": 2.5,
+        "Z_lecho": 100.0,
+        "q100": {
+          "y1": 1.1,
+          "V1": 4.05658181818,
+          "W1": 12.5,
+          "W2": 12.5,
+          "Q1": 55.778,
+          "Q2": 55.778,
+          "y0": 1.1,
+          "Sf": 0.045,
+          "beta": 1.0,
+          "phi": 1.0,
+          "exponente_x": 0.38,
+          "Dm_mm": 2.95,
+          "h_local": 1.1,
+          "Q_ll": 55.778,
+          "B_ll": 12.5,
+          "h_m_ll": 1.1,
+          "luz_libre": 12.5,
+          "V_mu": 4.05658181818,
+          "Ae": 2.2,
+          "Qe": 8.92448,
+          "L_obstruida": 2.0,
+          "fuentes": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          }
+        },
+        "q500": {
+          "y1": 1.371399,
+          "V1": 5.09800062564,
+          "W1": 12.5,
+          "W2": 12.5,
+          "Q1": 87.392412,
+          "Q2": 87.392412,
+          "y0": 1.371399,
+          "Sf": 0.045,
+          "beta": 1.05,
+          "phi": 1.0,
+          "exponente_x": 0.38,
+          "Dm_mm": 2.95,
+          "h_local": 1.371399,
+          "Q_ll": 87.392412,
+          "B_ll": 12.5,
+          "h_m_ll": 1.371399,
+          "luz_libre": 12.5,
+          "V_mu": 5.09800062564,
+          "Ae": 2.742798,
+          "Qe": 13.98278592,
+          "L_obstruida": 2.0,
+          "fuentes": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          }
+        },
+        "metodo_local": "froehlich",
+        "L_prima": 2.0,
+        "Ae": 2.0,
+        "forma": "muro_vertical",
+        "angulo_ataque": 90.0
+      },
+      "estribo_derecho": {
+        "lado": "derecho",
+        "D50_mm": 2.5,
+        "Z_lecho": 100.0,
+        "q100": {
+          "y1": 1.1,
+          "V1": 4.05658181818,
+          "W1": 12.5,
+          "W2": 12.5,
+          "Q1": 55.778,
+          "Q2": 55.778,
+          "y0": 1.1,
+          "Sf": 0.045,
+          "beta": 1.0,
+          "phi": 1.0,
+          "exponente_x": 0.38,
+          "Dm_mm": 2.95,
+          "h_local": 1.1,
+          "Q_ll": 55.778,
+          "B_ll": 12.5,
+          "h_m_ll": 1.1,
+          "luz_libre": 12.5,
+          "V_mu": 4.05658181818,
+          "Ae": 2.2,
+          "Qe": 8.92448,
+          "L_obstruida": 2.0,
+          "fuentes": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          }
+        },
+        "q500": {
+          "y1": 1.371399,
+          "V1": 5.09800062564,
+          "W1": 12.5,
+          "W2": 12.5,
+          "Q1": 87.392412,
+          "Q2": 87.392412,
+          "y0": 1.371399,
+          "Sf": 0.045,
+          "beta": 1.05,
+          "phi": 1.0,
+          "exponente_x": 0.38,
+          "Dm_mm": 2.95,
+          "h_local": 1.371399,
+          "Q_ll": 87.392412,
+          "B_ll": 12.5,
+          "h_m_ll": 1.371399,
+          "luz_libre": 12.5,
+          "V_mu": 5.09800062564,
+          "Ae": 2.742798,
+          "Qe": 13.98278592,
+          "L_obstruida": 2.0,
+          "fuentes": {
+            "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+            "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+            "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+            "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+            "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+            "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+            "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+            "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+            "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+            "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+          }
+        },
+        "metodo_local": "froehlich",
+        "L_prima": 2.0,
+        "Ae": 2.0,
+        "forma": "muro_vertical",
+        "angulo_ataque": 90.0
+      },
+      "pilares": [
+        {
+          "nombre": "P1 sintético",
+          "ancho_a": 0.8,
+          "forma": "circular",
+          "angulo_ataque": 10.0,
+          "q100": {
+            "y1": 1.1,
+            "V1": 4.05658181818,
+            "W1": 12.5,
+            "W2": 12.5,
+            "Q1": 55.778,
+            "Q2": 55.778,
+            "y0": 1.1,
+            "Sf": 0.045,
+            "beta": 1.0,
+            "phi": 1.0,
+            "exponente_x": 0.38,
+            "Dm_mm": 2.95,
+            "h_local": 1.1,
+            "Q_ll": 55.778,
+            "B_ll": 12.5,
+            "h_m_ll": 1.1,
+            "luz_libre": 12.5,
+            "V_mu": 4.05658181818,
+            "Ae": 2.2,
+            "Qe": 8.92448,
+            "L_obstruida": 2.0,
+            "fuentes": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            }
+          },
+          "q500": {
+            "y1": 1.371399,
+            "V1": 5.09800062564,
+            "W1": 12.5,
+            "W2": 12.5,
+            "Q1": 87.392412,
+            "Q2": 87.392412,
+            "y0": 1.371399,
+            "Sf": 0.045,
+            "beta": 1.05,
+            "phi": 1.0,
+            "exponente_x": 0.38,
+            "Dm_mm": 2.95,
+            "h_local": 1.371399,
+            "Q_ll": 87.392412,
+            "B_ll": 12.5,
+            "h_m_ll": 1.371399,
+            "luz_libre": 12.5,
+            "V_mu": 5.09800062564,
+            "Ae": 2.742798,
+            "Qe": 13.98278592,
+            "L_obstruida": 2.0,
+            "fuentes": {
+              "hidraulica": "EX-05: y100=1.1 m; y500=1.371399 m; V=Q/(12.5*y); Sf=0.045 adoptado. No modelo de puente.",
+              "geometria": "EX-02: ancho rectangular 12.5 m; h_local=hm; L obstruida=2 m por estribo.",
+              "granulometria": "EX-03: Dm=2.95 mm ficticio, distinto del D50=2.5 mm.",
+              "beta": "EX-06: beta100=1.00 y beta500=1.05 son supuestos de prueba, no tabla de frecuencia validada.",
+              "exponente_x": "EX-06: z=0.38 asumido para reproducir escenario; falta curva granulométrica real.",
+              "phi": "EX-06: phi=1 supuesto, sin estudio de carga sólida real.",
+              "luz_libre": "EX-02: luz libre mínima 12.5 m ficticia; mu calculado con Tabla 13 HHD p.107 y V_mu=Q/(12.5*y).",
+              "cierre_alpha": "EX-05: cierre rectangular alpha=Q/(B*hm^(5/3)), mismo caudal/ancho/tirante por sección.",
+              "local": "EX-07: Ae=L*y; Qe=Ae*V1 por distribución uniforme sintética, no Q1 del cauce completo.",
+              "pilar": "EX-08: a=0.8 m, l=3 m, nariz circular, theta=10 grados, K3=1.1 lecho plano, K4=1 sin armadura."
+            }
+          },
+          "Z_lecho": 99.8,
+          "longitud_l": 3.0,
+          "D50_mm": 2.5,
+          "K3": 1.1,
+          "K4": 1.0
+        }
+      ],
+      "cauce": {
+        "tipo": "degradacion",
+        "y_sg_lp": 0.2,
+        "notas": "EX-04: dato sintético; no utilizar para cimentación real."
+      },
+      "geotecnia": {
+        "cota_sondaje_min": 85.0,
+        "hay_estrato_competente": true,
+        "roca_resistente": false,
+        "tipo_cimentacion": "superficial",
+        "descripcion_estrato": "EX-03: estrato ficticio, sin perforación ni ensayos reales."
+      }
+    },
+    "documentos": {
+      "HHD": {
+        "archivo": "Manual de hidrologiay drenaje MTC.pdf",
+        "sha256": "0a1bdcd7c94016760642de91baf4d6e317e4cc85c529dfefae9a6bf76c8dcd88",
+        "ruta": "C:\\Users\\CARMEN\\Desktop\\PROYECTOS\\SOCAVACION\\normativos\\Manual de hidrologiay drenaje MTC.pdf",
+        "sha256_actual": "0a1bdcd7c94016760642de91baf4d6e317e4cc85c529dfefae9a6bf76c8dcd88",
+        "coincide": true
+      },
+      "MP": {
+        "archivo": "Manual de Puentes MTC 2018 (PGA).pdf",
+        "sha256": "46d37849141b3acef44bdae112496dafbb5d6813dc008d5495c2f2bb760936b1",
+        "ruta": "C:\\Users\\CARMEN\\Desktop\\PROYECTOS\\SOCAVACION\\normativos\\Manual de Puentes MTC 2018 (PGA).pdf",
+        "sha256_actual": "46d37849141b3acef44bdae112496dafbb5d6813dc008d5495c2f2bb760936b1",
+        "coincide": true
+      }
+    },
+    "referencias": {
+      "LL59": "HHD §4.1.1.5.4 b.2.2, ecuación 59, página impresa/PDF 108; Dm en mm",
+      "MU13": "HHD Tabla 13, página impresa/PDF 107; interpolación lineal es criterio de implementación",
+      "F92": "HHD §b.3.2.4, ecuaciones 92-94, Tabla 27, páginas impresas/PDF 148-151",
+      "H103": "HHD §b.3.2.6, ecuación 103, páginas impresas/PDF 156-157",
+      "CSU81": "HHD §b.3.1.10, ecuaciones 81-82, Tablas 20-22, páginas impresas/PDF 136-138; ver discrepancia CSU",
+      "CSU_CORRECCION": "USACE HEC-RAS Hydraulic Reference Manual 4.1, ecuación 10-6: a^0.65*y1^0.35; https://www.hec.usace.army.mil/software/hec-ras/documentation/HEC-RAS_4.1_Reference_Manual.pdf",
+      "CSU_ALCANCE": "USACE HEC-RAS 6.4, Computing Pier Scour With The CSU Equation: límites restringidos a nariz redonda alineada; este motor conserva resultado sin truncamiento. https://www.hec.usace.army.mil/confluence/rasdocs/ras1dtechref/6.4/estimating-scour-at-bridges/computing-local-scour-at-piers/computing-pier-scour-with-the-csu-equation",
+      "MP123a": "MP artículo 1.2.3a, página impresa 47 / PDF 51: escenarios y suma por apoyo",
+      "MP124": "MP artículo 1.2.4, páginas impresas 47-48 / PDF 51-52: cimentaciones",
+      "MP243834": "MP artículo 2.4.3.8.3.4, página impresa 104 / PDF 108: estados límite"
+    },
+    "convencion": "ds=max(Hs-h_local,0); LL incluye contracción; total=LP+LL+local del mismo apoyo",
+    "estado_limite": {
+      "diseno": "Resistencia y servicio",
+      "verificacion": "Evento extremo"
+    },
+    "alcance": "LL granular homogéneo, flujo libre; requiere estudio hidráulico y granulometría; no calcula capacidad ni estabilidad de cimentación",
+    "archivos_codigo": {
+      "__init__.py": "0551b4fccf8669d94e101eea7a8ccfa0fa4a0a1cff438b1c5314e1ef5713974e",
+      "__main__.py": "5bc48a291ef80012471582425ece1033d1121284706e979b0948d334c2a87c2c",
+      "cli/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cli/app.py": "e53073fc44f1e5d0851f81b419a6d27c4092f65461de557bd8a2fbccb0cf3f2c",
+      "cli/ascii_tables.py": "8027557e79561db3c9f33fecfb86f420b636210bf015fb1d9a7926540b19e0df",
+      "cli/display.py": "2dc820dfe73b4877627141bdb4bbb29e537bcf36e87c51fd2eb87e7dfe33a725",
+      "core/__init__.py": "956ec77a90a80e17f9d5a04ef43bcec90021526882794406332d71b146d1c9c7",
+      "core/contraction.py": "c473427dc16fa0ad4ff24054670e18d7133347353f1e1539cd0c320ea983e850",
+      "core/elevations.py": "3782d2114cb1371ec9c75d20dd128b5e936c77848dde02ae0abb7c6e19536ade",
+      "core/general/__init__.py": "5b6917b73b73e672500001b06f5bbb22cc5bffab17137c980f156b6011565aa8",
+      "core/general/aggregator.py": "d8964958c64db97640ae286680064bc5b90ece1453367c66d84681ce652e5e5f",
+      "core/general/lacey.py": "89ce6d7ec1cf2fb317167406d04bd80ad4c1a627358e41ebcdb93849001473a6",
+      "core/general/lischtvan.py": "3bef6b4c75800409195b2dcc0d73445f815b210e0071bcbbb885fe83988bd9f4",
+      "core/general/neill.py": "07db521e50fbdc888f1f3b78c3b1c65b5661864dc6a8f7e898d39340ee53cb70",
+      "core/interpolation.py": "a303c39864074d277c4b87b79dd6023d06c1538d4207536819f0b87e5c6c2fa3",
+      "core/local_abutment.py": "aeac3dc1cce6f1a9c7cb376f45ac28da5917939c5e74b03f3e964a1a022860fd",
+      "core/local_pier.py": "fa72b66b4734739c9440b281d3729cfe9e9e99840bc28f6fbee73191d0d147fb",
+      "core/long_term.py": "11d86e7cfb7fc7efb223db534277b696621b0c9a72b0502c64fa8e52fdc28808",
+      "core/pipeline.py": "b8770cd3acb690381655fa9d392f5f45f36bf1f5ebb708d9d0b1af57e937157e",
+      "core/regime.py": "ef722ec26061c8b5a5374272a623308c5358cc32d3dc96e941ddbe57dc902d8d",
+      "core/totals.py": "cd67f499f65f607776aee4d37d0c5c57c3da8074f6abded29362745de4484d72",
+      "domain/__init__.py": "411a0ffe1b7a7dfdf298aba1c0e7596326b972aefb44bd76f50a4d975878152d",
+      "domain/enums.py": "3d2310126b6b2748d7a168823286e15dd6f78999209d8e5c8f12bb4f6417b494",
+      "domain/models.py": "8b80a673dc8e5070bdb06b45cb37d79ec3007883607f20cd05822b9db3533ad5",
+      "domain/results.py": "b00e9bfe11baa0af7d2f2599f9ca6362299311050724da166309148da53111eb",
+      "geotech/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "geotech/compatibility.py": "e92f5f2cfd69053337009d6b539ef3c3d0a0dca28615d3bd259e4b0e58a4eeb3",
+      "input/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "input/loader.py": "40c37d9b8453b1a0768640fdac11062cc7ea024698c27c9527d9c57386968020",
+      "input/validator.py": "d90c8ab2d3b3ae5f6f741dfa5434e603c4a86c483fba40e1e2227e2cd78e4e1c",
+      "input/wizard.py": "7ff07ff921d5a93b4a0eda15b1cf7754752dcc5ac2875b0474eaee5960adf222",
+      "normative/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normative/constants.py": "f6796e81f8474c09a5cd0161e5060061d6e5a265fa75ffbf4d1d821211bc35c4",
+      "normative/mu.py": "3144f7d92cafa03b2ab223868313793ac89e6120f62e40e7ea26eda7ba287ad0",
+      "normative/references.py": "9c379c95b958bde0000ba84ae0bb5dce1a0ab6c4628773e9e9b241afdfdb3d15",
+      "normative/tables.py": "a189c04658fe174cb5e59ca7ef9e0c0f488c29212b6296c3cce7b110fac146a5",
+      "report/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report/builder.py": "fb3408429d2ee8d0d0bb220680ed04aac915fb65e16cf996067f8af775aea6a0",
+      "report/docx_builder.py": "a13bd4b166725fdc537fde894ca3a0dbf67b4e082c425a508495347ad7aaeff8",
+      "report/docx_calcs.py": "6687f288689c5b93a9a6c3e85387de6af42a4f9bdbeb1c3c863eecfdc4571572",
+      "report/docx_format.py": "1c7fa64b038713d941b727c7ec3c5300ea23702307ce2616716756d6ed7c95e8",
+      "report/docx_math.py": "ad0911b0204ce3642af48b5e63c90f056332c3e0eb38a809f8597d139fca20f7",
+      "report/docx_sections.py": "c759d336968dc920c65634d65092b1413ccc765c3ecc18d0086972a14a28b5ff",
+      "report/docx_style.py": "43e34a5fac736dc0ddc26d2328aed72f3673800d367efabd42e24651983c4261",
+      "report/trace.py": "21e90e7e9a544be6844724700cdd99eef577da8b3380b3ad05d7a409ff89f6d6"
+    },
+    "fuente_codigo_sha256": "6cef5e8452685f499818c2bec3db64bcdc4138174e128834d1a9e015ddd5046e"
+  }
+}

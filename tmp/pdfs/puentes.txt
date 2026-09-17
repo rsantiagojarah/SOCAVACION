@@ -1,0 +1,222 @@
+PDF 50
+ 
+Manual de  Puentes  Página 46  
+ 
+• Determinación del perfil de flujo ante el paso del  caudal de diseño a lo largo del cauce; se 
+sugiere la utilización de softwares, como por ejemplo HEC-RAS o similares con la autorización 
+del propietario de la obra. 
+• Determinación de las características hidráulicas d el flujo; estas comprenden la velocidad media, 
+ancho superficial, área de flujo, pendiente de la línea de energía, nivel de la superficie de agua, 
+etc., cuyos valores son necesarios para la determinación de la profundidad de socavación. 
+• Determinación y evaluación de las profundidades de  socavación total, que es la sumatoria de 
+la socavación general, por contracción y local. 
+• Recomendaciones de protección y/o consideraciones de diseño adicionales. 
+1.2.2a Estudios y Trabajos Previos 
+Se tienen los siguientes estudios y trabajos básico s principales previos a los estudios de hidráulica: 
+• Levantamiento topográfico para el estudio hidráuli co debe comprender lo siguiente: 
+- En ríos con amplias llanuras de inundación, donde  el puente produzca contracción del flujo 
+de avenida, el levantamiento abarcara 12 veces el ancho del cauce principal aguas arriba del 
+eje propuesto y 6 veces hacia aguas abajo. 
+- En cursos de agua donde el puente no produzca con tracción del flujo de avenida y presente 
+una pendiente pronunciada, el levantamiento topográfico abarcara 8 veces el ancho del cauce 
+principal aguas arriba del eje propuesto y 4 veces hacia aguas abajo. El levantamiento 
+topográfico no debe ser menor a 150.00 m. aguas arr iba y 150.00 m aguas abajo del eje del 
+puente propuesto. 
+- En caso que el eje del puente propuesto se ubique  cerca de la desembocadura a un rio 
+principal, lago o mar el levantamiento topográfico deberá incluir la zona de confluencia. 
+- En los planos de topografía se debe indicar lo si guiente: los límites de las llanuras de 
+inundación, los tirantes mínimos y máximos, ambos d efinidos según evidencias encontradas 
+en campo y consultas a los pobladores de la zona, y  se debe colocar también los niveles de 
+agua encontrados durante el trabajos de campo. 
+• Estudios del material de cauce, peso específico, a nálisis granulométrico. Una vez definido el 
+eje del puente las muestras del material del cauce deben ser tomadas al menos en cuatro 
+puntos, dos en el eje del puente cercanos a los apoyos (estribos), B metros aguas arriba y 0.5B 
+aguas abajo, donde B es el ancho promedio del rio. En cada punto se deberá ejecutar 
+prospección a cielo abierto a una profundidad no me nor de 3.00 m., en los cuales se tomarán 
+muestras representativas de cada estrato. Para puen tes con apoyos intermedios se deberá 
+tomar muestras correspondientes en concordancia con  los especialistas de Geología y 
+Geotecnia.  
+1.2.3 Consideraciones para el Diseño 
+Los puentes ubicados en el cruce con un curso de ag ua deben ser diseñados de modo que las 
+alteraciones u obstáculos que estos representen ant e este curso de agua sean previstos y puedan ser 
+admitidos en el desempeño de la estructura a lo lar go de su vida útil o se tomen medidas preventivas. 
+Para esto deben establecerse las características hidrogeodinámicas del sistema fluvial con el objeto de 
+determinar la estabilidad de la obra respecto al comportamiento del cauce. Es importante considerar la 
+posible movilidad del cauce, el aporte de escombros  desde la cuenca y los fenómenos de socavación, 
+ver Artículos 1.2.2a y 2.4.3.8.3.4, así como la pos ibilidad de ocurrencia de derrumbes, deslizamientos  
+e inundaciones. 
+Dado que, generalmente, el daño ocasional producido  a la vía y accesos aledaños al puente ante una 
+avenida extraordinaria puede ser rápidamente repara do para restaurar el servicio de tráfico y, de otro  
+PDF 51
+ 
+Manual de  Puentes  Página 47  
+ 
+lado, un puente que colapsa o sufre daños estructurales mayores ante la socavación puede amenazar 
+la seguridad de los transeúntes así como crear impactos sociales y pérdidas económicas significativas 
+por un largo periodo de tiempo, debe considerarse m ayor riesgo en la determinación del área de flujo 
+a ser confinada por el puente que en la estimación de las profundidades de socavación.  
+El estudio debe indicar los periodos de sequía, de avenidas, y de transición, para recomendar las 
+previsiones a tomarse en cuenta antes, durante y de spués de la construcción de las estructuras 
+ubicadas en el cauce. 
+Para la ejecución del puente, deberán construirse los pases provisionales, de acuerdo a los resultados 
+del estudio de Hidrología e Hidráulica. 
+1.2.3a Cálculos de la Socavación  
+Se debe investigar la socavación de las fundaciones de los puentes para dos condiciones: 
+• Para la inundación de diseño para socavación se de be asumir que el material del lecho dentro del 
+prisma de socavación encima de la línea de socavaci ón total ha sido retirado (no se considera) 
+para las condiciones de diseño. A no ser que el pro pietario de la obra determine algo diferente, la 
+inundación de diseño debe ser la más severa del período de retorno de 100 años o una inundación 
+de desbordamiento de menor período de recurrencia s i ésta resulta más severa. 
+• Para la inundación de verificación para socavación , se debe investigar la estabilidad de las 
+fundaciones del puente para las condiciones provoca das por una determinada inundación de no 
+más de 500 años de periodo de retorno o por una inundación de desbordamiento de menor período 
+de recurrencia. Bajo esta condición no es necesaria una reserva superior a la requerida por motivos 
+de estabilidad. Se aplicará el estado límite de evento extremo. 
+En la zona del rio donde se ubicara el puente se de berá tener en cuenta los siguientes fenómenos de 
+socavación: 
+- Socavación general, producida por variación del p erfil longitudinal debido al comportamiento 
+fluvial sin la presencia del puente.  
+- Socavación por contracción de la sección transver sal, debido a la construcción de los estribos 
+del puente ubicados  en el cauce del río. 
+- Socavación local, debido a la presencia de pilare s y estribos. 
+La profundidad de socavación potencial total será l a suma de la socavación general, socavación por 
+contracción y socavación local en estribos y pilare s. 
+En los cálculos de socavación se usarán los resulta dos de los factores hidráulicos que intervienen en 
+el modelo correspondiente, la geometría de los apoyos respectivos y las características granulométrica 
+del material del lecho.  
+En el caso que el tramo del río en estudio se encue ntre cerca de la confluencia con otros ríos, o cerc a 
+de un lago o en el mar, los cálculos de socavación se deben efectuar cuando los niveles de agua 
+alcanzados en la desembocadura correspondiente sean  mínimos.   
+1.2.4 Interrelación con los Estudios Geológicos y G eotécnicos 
+En el caso de puentes sobre cursos de agua, la info rmación sobre la geomorfología y las condiciones 
+del subsuelo del cauce y alrededores son complement arias con aquella obtenida de los estudios 
+hidrológicos. El diseño de los elementos de la sube structura se realizará tomando en cuenta los 
+aspectos de ingeniería estructural, geotécnica e hi dráulica en forma conjunta. El nivel de ubicación d e 
+la cimentación depende del tipo de cimentación, est o es, si es superficial o profunda, si va apoyada 
+sobre suelo, roca erosionable o roca resistente, et c.  
+PDF 52
+ 
+Manual de  Puentes  Página 48  
+ 
+Para el caso de cimentaciones superficiales, (Ver Artículo 2.6.4.4.2 AASHTO)  el  fondo de la cimentación 
+deberá estar por debajo de la profundidad de socavación máxima calculada, estimado en por lo menos 
+1.00m (40.0 in). Si la cimentación se apoya en roca  buena, resistente a la socavación, se diseñará  y 
+construirá manteniendo la integridad de la roca. 
+Para el caso de cimentaciones profundas como pilote s hincados, pilotes perforados, etc., la longitud 
+efectiva de cálculo de su profundidad se tomará des de el nivel de la socavación total máxima  hasta la 
+parte inferior del pilote.  
+Si una zapata se apoya sobre  pilotes para trasmitirles las cargas que soporta, la parte superior de esta 
+zapata estará por debajo de la socavación estimada por contracción, con la finalidad de minimizar la 
+obstrucción al flujo de la inundación y que se prod uzca socavación local 
+(Ver Artículo 2.6.4.4.2 AASHTO) . 
+1.2.5 Información de Apoyo 
+Para el óptimo logro de los objetivos, el estudio de hidrología e hidráulica debe apoyarse en la siguiente 
+información adicional: 
+• Perfil estratigráfico del suelo. 
+• Tamaño, gradación del material del lecho. 
+• Secciones transversales del cauce. 
+• Vista en planta del curso de agua. 
+• Características de la cuenca. 
+• Datos de erosión en otros puentes. 
+• Historial de avenidas. 
+• Ubicación del puente respecto a otras estructuras.  
+o Carácter del curso de agua (perenne, intermitente,  etc.). 
+o Geomorfología del lugar (con llanuras de inundació n; cruza deltas o abanicos aluviales, 
+meandros, recto, trenzado, etc.). 
+• Historial erosivo del curso de agua. 
+• Historial de desarrollo del curso de agua y de la cuenca. Adquirir mapas, fotografías aéreas; 
+entrevistar residentes locales; revisar proyectos de recursos hídricos planificados a futuro. 
+• Evaluación cualitativa del lugar con un estimado d el potencial de movimiento del curso de agua 
+y su efecto sobre el puente. 
+1.2.6 Documentación Requerida 
+Los estudios deberán ser documentados mediante un i nforme que contendrá, como mínimo, lo 
+siguiente: 
+• Características del río en la zona del proyecto. 
+• Régimen de caudales. 
+• Características hidráulicas. 
+• Caudal de diseño y periodo de retorno. 
+• Definición de la luz del puente y de los niveles d el fondo de la superestructura. 
+• Profundidad de socavación potencial total. 
+PDF 53
+ 
+Manual de  Puentes  Página 49  
+ 
+• Profundidad mínima recomendable para la ubicación de la cimentación, según el tipo de 
+cimentación teniendo en cuenta la profundidad de so cavación. 
+• Características de las obras de defensa, de encauz amiento y obras complementarias. 
+• Conclusiones y recomendaciones. 
+1.3 ESTUDIOS GEOLÓGICOS Y GEOTÉCNICOS 
+1.3.1 Estudios Geológicos 
+1.3.1.1 Objetivos 
+Establecer las características geológicas, tanto lo cal como general de las diferentes formaciones 
+geológicas que se encuentran identificando tanto su  distribución como sus características geotécnicas 
+correspondientes.  
+1.3.1.2 Alcance 
+El programa de estudios deberá considerar exploraciones de campo, cuya cantidad será determinada en 
+base a la envergadura del proyecto. 
+Los estudios geológicos y geotécnicos comprenderán:  
+• Revisión de información existente y descripción de  la geología a nivel regional y local. 
+• Descripción geomorfológica. 
+• Zonificación geológica de la zona. 
+• Definición de las propiedades físicas y mecánicas de suelos y/o rocas. 
+• Definición de zonas de deslizamientos, huaycos y a luviones sucedidos en el pasado y de 
+potencial ocurrencia en el futuro. 
+• Recomendación de canteras para materiales de const rucción. 
+• Identificación y caracterización de fallas geológi cas. 
+• Entre otros. 
+1.3.2 Estudios Geotécnicos 
+1.3.2.1 Objetivos 
+Establecer las características geotécnicas, es deci r, la estratigrafía, la identificación y las propie dades 
+físicas y mecánicas de los suelos para el diseño de  cimentaciones estables.  
+1.3.2.2 Alcances 
+El estudio debe considerar exploraciones de campo y  ensayos de laboratorio, cuya cantidad será 
+determinada en base a la envergadura del proyecto, en términos de su longitud y las condiciones del 
+suelo que permitan determinar los parámetros geotéc nicos. Los estudios deberán comprender la zona 
+de ubicación del puente, estribos, pilares y acceso s. 
+Los estudios geotécnicos comprenderán: 
+• Ensayos de campo en suelos y/o rocas. 
+• Ensayos de laboratorio en muestras de suelo y/o ro ca extraídas de la zona. 
+PDF 108
+ 
+Manual de  Puentes  Página 104  
+ 
+2.4.3.8.3.4 Cambio de las Fundaciones Debido al Est ado Límite para Socavación 
+(3.7.5 AASHTO) 
+Se aplicarán los requisitos del Artículo 1.2.3  (2.6.4.4 AASHTO)  las consecuencias de los cambios de las 
+condiciones de fundación provocados por la inundaci ón de diseño para socavación se deberán 
+considerar en los estados límites de resistencia y servicio. Las consecuencias de los cambios de las 
+condiciones de fundación provocados por la socavaci ón resultante de la inundación de control para 
+socavación y por los huracanes se deberán considera r en los estados límites correspondientes a 
+eventos extremos. 
+En términos estadísticos, la socavación es la causa más habitual de falla de los puentes carreteros.  
+En el Artículo 1.2.3a se trata sobre el estudio y los efectos de la socavación. La socavación en sí misma 
+no constituye una solicitación, pero al modificar l as condiciones de la subestructura puede alterar 
+significativamente las consecuencias de las solicitaciones que actúan sobre las estructuras. 
+2.4.3.9 Solicitaciones Provocadas por Deformaciones  Superpuestas: TU, TG, SH, CR, SE, PS 
+(3.12 AASHTO)  
+2.4.3.9.1 Requisitos Generales 
+(3.12.1 AASHTO)  
+Se deberán considerar las solicitaciones internas q ue la fluencia lenta y contracción provocan en los 
+componentes. Si es conveniente, se debería incluir el efecto de gradiente de temperatura. Las 
+solicitaciones debidas a la deformación de los comp onentes resistentes, el desplazamiento de los 
+puntos de aplicación de las cargas y los movimiento s de los apoyos se deberán incluir en el análisis. 
+2.4.3.9.2 Rangos de Temperatura 
+En ausencia de información más precisa, los rangos de temperatura serán los especificados en la Tabla 
+2.4.3.9.2-1. Para calcular los efectos provocados por la deform ación de origen térmico se deberá usar 
+la diferencia entre el límite inferior o superior e xtendido y la temperatura básica de la construcción  
+supuesta en el diseño.  
+La temperatura de referencia básica será la temperatura ambiente promedio durante las 48 horas antes 
+del vaciado del concreto o antes de la colocación d e aquellos elementos que determinan la 
+hiperestaticidad de la estructura. 
+Tabla 2.4.3.9.2-1 Rangos de Temperatura (°C)  
+Material Costa Sierra Selva 
+Concreto armado o preesforzado 10° a 40°C -10° a +3 5°C 10° a 50°C 
+Acero 5° a 50°C -20° a +50°C 10° a 60°C 
+Madera 10° a 40°C -10° a +35°C 10° a 50°C 
+2.4.3.9.3 Diseño de la Variación Térmica 
+(3.12.2.3 AASHTO)  
+El rango de movimiento térmico, ∆D, se obtiene: 
+∆D= EF 'GHIJK3ñM −GHK3ñM,  
+Donde: 
+F = longitud de expansión, (in.); (mm)  
+E = coeficiente de expansión térmica (in/in/°F); (mm /mm/ °C) 

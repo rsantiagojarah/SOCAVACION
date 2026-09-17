@@ -29,8 +29,4 @@ def verificar_zapata_pilotes(z_encepado: float, z_lecho_contraido: float) -> boo
 
 
 def requiere_reserva(geotecnia: DatosGeotecnia) -> bool:
-    if geotecnia.tipo_cimentacion == TipoCimentacion.SOBRE_ROCA:
-        return False
-    if geotecnia.tipo_cimentacion == TipoCimentacion.PROFUNDA:
-        return False
-    return True
+    return geotecnia.evaluar and geotecnia.tipo_cimentacion == TipoCimentacion.SUPERFICIAL

@@ -13,7 +13,7 @@ def calcular_y_sg_lp(cauce: ClasificacionCauce) -> tuple[float, list[str]]:
 
     if cauce.tipo == TipoCauce.AGRADACION and y_lp < 0:
         advertencias.append(
-            "Agradación detectada: no se descuenta del diseño (MTC Art. 1.2.3a)"
+            "Agradación detectada: no se descuenta del diseño (criterio conservador de implementación)."
         )
         return 0.0, advertencias
 
@@ -23,7 +23,7 @@ def calcular_y_sg_lp(cauce: ClasificacionCauce) -> tuple[float, list[str]]:
     if cauce.tipo == TipoCauce.DEGRADACION:
         if y_lp <= 0:
             advertencias.append(
-                "Cauce degradante sin y_sg_lp: considere rango 0.30–1.00 m (10.2.2)"
+                "Cauce degradante sin y_sg_lp: requiere estudio morfológico; no se asigna un rango sin sustento."
             )
         return max(y_lp, 0.0), advertencias
 

@@ -1,0 +1,45 @@
+# Socavación local en estribos — Froehlich
+
+Proyecto: {{ proyecto.nombre }}. Modo: {{ proyecto.modo }}. Fecha: {{ fecha }}.
+
+{{ resultado.auditoria.alcance }}
+
+Método: MTC HHD, ecuaciones 92–94 y Tabla 27, pp.148–151.
+Entrada manual de HEC-RAS; no se reconstruye la sección ni se calculan franjas.
+
+## Procedimiento
+
+1. Introducir Q y A de la misma sección activa de aproximación y evento. R es opcional e informativo.
+2. Introducir L, Ae y Qe del flujo obstruido aguas arriba por cada estribo; no usar automáticamente el área o el caudal total.
+3. Calcular he=Ae/L, Ve=Qe/Ae, Fre=Ve/sqrt(9.81 he).
+4. Seleccionar Kf por forma (Tabla 27); Ktheta=(theta/90)^0.13 (ec.93).
+5. Calcular ys=he[2.27 Kf Ktheta (L/he)^0.43 Fre^0.61 + 1] (ec.92, término +1 conservado).
+
+R=A/P no sustituye he=Ae/L. La velocidad Q/A de sección tampoco sustituye Ve.
+
+## Resultados locales por evento
+
+| Evento | Estribo | he (m) | Ve (m/s) | Fre | Socavación local ys (m) |
+|---|---|---:|---:|---:|---:|
+{% for c in resultado.caudales -%}
+{% for e in c.estribos -%}
+| {{ c.escenario }} | {{ e.lado.value }} | {{ '%.6f'|format(e.y_sl.intermedios.ya) }} | {{ '%.6f'|format(e.y_sl.intermedios.Ve) }} | {{ '%.6f'|format(e.y_sl.intermedios.Fr_a) }} | {{ '%.6f'|format(e.y_sl.valor) }} |
+{% endfor -%}
+{% endfor %}
+
+## Envolventes exclusivamente locales
+
+| Estribo | Q100/Qot local (m), evento | Q500/Qot local (m), evento | Máximo local (m) |
+|---|---|---|---:|
+{% for e in resultado.estribos_finales -%}
+| {{ e.lado.value }} | {{ '%.6f'|format(e.y_s_100) }}, {{ e.escenario_diseno }} | {{ '%.6f'|format(e.y_s_500) }}, {{ e.escenario_verificacion }} | {{ '%.6f'|format(e.y_s_diseno) }} |
+{% endfor %}
+
+MP 1.2.3a exige considerar también socavación general y contracción para evaluar la socavación total del puente.
+Esta memoria sólo cubre el componente local solicitado. No verifica integralmente el diseño.
+Si se incluye desbordamiento, se compara su severidad local para T_ot<100/T_ot<500, respectivamente.
+
+Los campos históricos y_s_100/y_s_500/y_s_diseno de la auditoría representan aquí envolventes **locales**;
+y_s_total, general, contracción y cotas se guardan como null (no evaluados), no como ceros.
+
+Geotecnia: NO EVALUADA. No se calculan cotas ni reservas de cimentación.

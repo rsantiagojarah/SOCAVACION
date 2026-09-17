@@ -44,12 +44,15 @@ def test_mostrar_resultados_ascii(capsys):
 def test_wizard_demo_mode():
     proyecto = ejecutar_wizard(salida=None, use_defaults=True)
     assert proyecto.nombre == "Demo"
-    assert proyecto.Q100 == 850.0
-    assert proyecto.Q500 == 1200.0
-    assert proyecto.estribo_izquierdo.D50_mm == 2.5
-    assert proyecto.estribo_derecho.D50_mm == 3.0
-    assert proyecto.estribo_izquierdo.q100.Q1 == 850.0
-    assert proyecto.estribo_izquierdo.q500.Q1 == 1200.0
+    assert proyecto.Q100 == 55.778
+    assert proyecto.Q500 == 87.392412
+    assert proyecto.metodo_calculo == 'froehlich'
+    assert proyecto.estribo_izquierdo.D50_mm is None
+    assert proyecto.estribo_derecho.D50_mm is None
+    assert proyecto.estribo_izquierdo.q100.Qe == 8
+    assert proyecto.estribo_izquierdo.q500.Qe == 13
+    assert not proyecto.pilares
+    assert proyecto.datos_prueba
 
 
 def test_generate_word_report(tmp_path):
@@ -63,7 +66,7 @@ def test_generate_word_report(tmp_path):
     assert generated.suffix == ".docx"
 
 
-def test_calcular_y_mostrar_opens_word_dialog(monkeypatch, capsys):
+def test_calcular_y_mostrar_opens_word_dialog(monkeypatch, capsys, tmp_path):
     from socavacion import cli
     from socavacion.cli import app
     from socavacion.input.loader import cargar_proyecto
@@ -80,6 +83,7 @@ def test_calcular_y_mostrar_opens_word_dialog(monkeypatch, capsys):
     )
 
     proyecto = cargar_proyecto(EJEMPLO)
+    monkeypatch.chdir(tmp_path)
     app._calcular_y_mostrar(proyecto, export=None, quiet=False, word=None)
 
     assert len(called) == 1

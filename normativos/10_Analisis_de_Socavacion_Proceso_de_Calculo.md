@@ -1,5 +1,7 @@
 # 10. ANÁLISIS DE SOCAVACIÓN
 
+> DOCUMENTO HISTÓRICO NO RECTOR DEL MOTOR ACTUAL. Contiene criterios y fórmulas que no se deben usar como especificación de MTC-LL-2.0. Consultar [METODO_SOCAVACION_MTC_TRAZABLE.md](METODO_SOCAVACION_MTC_TRAZABLE.md), que identifica correcciones, fuentes y alcance. No sumar Laursen al LL con mu del motor vigente.
+
 **Norma de referencia:** *Manual de Puentes MTC 2018*, Art. 1.2, 1.2.2a, 1.2.3, 1.2.3a, 1.2.4, 1.2.5, 1.2.6, 1.3.3 y 2.4.3.8.3.4 (AASHTO LRFD 2.6.4.4 / 3.7.5).  
 **Métodos de cálculo:** HEC-18 (FHWA), HEC-20 y métodos complementarios de hidráulica fluvial (Lischtvan–Lebediev, Neill, Lacey).
 

@@ -1,0 +1,52 @@
+# Caso SINTÉTICO asimétrico. No procede de un modelo HEC-RAS real.
+proyecto:
+  nombre: Demo Froehlich HEC-RAS
+  metodo_calculo: froehlich
+  entrada_hidraulica: hec_ras
+  modo: preliminar
+  datos_prueba: true
+  Q100: 55.778
+  Q500: 87.392412
+  fuentes:
+    hidrologia: 'EX-F: prueba de software, no estudio hidrológico'
+  justificacion_sin_desbordamiento: 'EX-F: omitido únicamente en el ensayo de software'
+geotecnia:
+  evaluar: false
+  hay_estrato_competente: false
+estribo_izquierdo:
+  forma: muro_vertical
+  angulo_ataque: 90
+  L_prima: 2
+  Ae: 3
+  q100: &q100
+    area_hidraulica: 18
+    radio_hidraulico: 0.9
+    L_obstruida: 2
+    Ae: 3
+    Qe: 8
+    fuentes: &fuentes
+      hidraulica: 'EX-F: sección y perfil sintéticos, no HEC-RAS real'
+      geometria: 'EX-F: geometría sintética, sin levantamiento'
+      local: 'EX-F: Ae/Qe/L elegidos para ensayo, no derivados por franjas'
+  q500: &q500
+    area_hidraulica: 28
+    radio_hidraulico: 1.2
+    L_obstruida: 2.5
+    Ae: 4.5
+    Qe: 13
+    fuentes: *fuentes
+estribo_derecho:
+  forma: muro_vertical_aletas_45
+  angulo_ataque: 80
+  L_prima: 1.8
+  Ae: 2.2
+  q100:
+    <<: *q100
+    L_obstruida: 1.8
+    Ae: 2.2
+    Qe: 5
+  q500:
+    <<: *q500
+    L_obstruida: 2
+    Ae: 3.2
+    Qe: 9

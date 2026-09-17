@@ -9,6 +9,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from socavacion.domain.models import Proyecto
 from socavacion.domain.results import ResultadoCompleto
+from socavacion.report.trace import anexo_markdown, guardar_auditoria
 
 _TEMPLATES = Path(__file__).parent / "templates"
 
@@ -22,12 +23,13 @@ def generar_informe(
         loader=FileSystemLoader(str(_TEMPLATES)),
         autoescape=select_autoescape(["md"]),
     )
-    tpl = env.get_template("informe.md.j2")
+    tpl = env.get_template('froehlich.md.j2' if proyecto.metodo_calculo == 'froehlich' else 'informe.md.j2')
     ruta.parent.mkdir(parents=True, exist_ok=True)
     contenido = tpl.render(
         resultado=resultado,
         proyecto=proyecto,
         fecha=datetime.now().strftime("%Y-%m-%d %H:%M"),
     )
-    ruta.write_text(contenido, encoding="utf-8")
+    ruta.write_text(contenido + anexo_markdown(resultado), encoding="utf-8")
+    guardar_auditoria(resultado, ruta)
     return ruta

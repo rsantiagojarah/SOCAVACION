@@ -9,6 +9,8 @@ from socavacion.domain.results import ResultadoEstriboCaudal, ResultadoEstriboFi
 
 def total_estribo(res: ResultadoEstriboCaudal) -> float:
     """y_s = y_sg + y_sc + y_sl."""
+    if res.general is None or res.y_sc is None:
+        raise ValueError('Socavación total no evaluada: Froehlich sólo proporciona el componente local.')
     return res.general.y_sg_total + res.y_sc.valor + res.y_sl.valor
 
 
@@ -46,6 +48,8 @@ def consolidar_estribos(
                 Z_cim_min=cotas.get("Z_cim_min"),
                 componentes_100=r100,
                 componentes_500=r500,
+                escenario_diseno=r100.escenario,
+                escenario_verificacion=r500.escenario,
             )
         )
     return finales

@@ -1,8 +1,11 @@
 # Plantilla de proyecto — Análisis de Socavación MTC 2018
 # Unidades: Q m³/s, longitudes m, D50 mm, cotas m s.n.m.
+# Valores ilustrativos NO sustentados para un proyecto real. No son tablas normativas.
+# Plantilla completa trazable: ejemplos/puente_mtc_trazable.yaml
 
 proyecto:
   nombre: "Puente Rio Ejemplo"
+  modo: preliminar
   Q100: 850.0
   Q500: 1200.0
   Q_ot: null
@@ -26,6 +29,11 @@ estribo_izquierdo:
     W2: 38.0
     y0: 3.00
     Sf: 0.002
+    beta: 1.00       # MTC HHD: coeficiente de frecuencia, justificar por Tr
+    mu: 0.89         # MTC HHD: factor de contracción según luz libre y V
+    phi: 1.00        # MTC HHD: factor de transporte; validar con sedimentos
+    exponente_x: 0.38
+    Dm_mm: 2.95      # diámetro característico del lecho, mm
   q500:
     y1: 4.10
     V1: 2.80
@@ -33,6 +41,11 @@ estribo_izquierdo:
     W2: 38.0
     y0: 3.50
     Sf: 0.002
+    beta: 1.05
+    mu: 0.89
+    phi: 1.00
+    exponente_x: 0.38
+    Dm_mm: 2.95
 
 estribo_derecho:
   D50_mm: 3.0
@@ -48,6 +61,11 @@ estribo_derecho:
     W2: 38.0
     y0: 3.00
     Sf: 0.002
+    beta: 1.00
+    mu: 0.89
+    phi: 1.00
+    exponente_x: 0.38
+    Dm_mm: 2.95
   q500:
     y1: 4.05
     V1: 2.75
@@ -55,6 +73,11 @@ estribo_derecho:
     W2: 38.0
     y0: 3.50
     Sf: 0.002
+    beta: 1.05
+    mu: 0.89
+    phi: 1.00
+    exponente_x: 0.38
+    Dm_mm: 2.95
 
 pilares: []
 # Ejemplo pilar:
@@ -63,7 +86,7 @@ pilares: []
 #   forma: circular
 #   angulo_ataque: 0.0
 #   D50_mm: 2.5
-#   K3: 1.0
+#   K3: 1.1
 #   K4: 1.0
 #   q100: { y1: 3.2, V1: 2.1, W1: 38, W2: 35, y0: 3.0, Sf: 0.002 }
 #   q500: { y1: 4.1, V1: 2.8, W1: 38, W2: 35, y0: 3.5, Sf: 0.002 }

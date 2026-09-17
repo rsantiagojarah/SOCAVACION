@@ -15,16 +15,30 @@ from socavacion.domain.results import (
 def evaluar_compatibilidad(
     proyecto: Proyecto,
     estribos: list[ResultadoEstriboFinal],
+    caudales=None,
+    pilares=None,
 ) -> ResultadoGeotecnia:
     geo = proyecto.geotecnia
+    if not geo.evaluar or geo.cota_sondaje_min is None:
+        return ResultadoGeotecnia(
+            items=[ItemCompatibilidad('Evaluación geotécnica', 'No realizada',
+                   'Se requieren datos de cimentación y exploración', False)],
+            compatible_global=False,
+            conclusion='Geotecnia NO EVALUADA: este resultado sólo estima socavación; no determina una cimentación apta.',
+        )
     items: list[ItemCompatibilidad] = []
 
-    z_soc_min = min(e.Z_lecho_soc for e in estribos)
+    cotas = [e.Z_lecho_soc for e in estribos] + [p.Z_lecho_soc for p in pilares or [] if p.Z_lecho_soc is not None]
+    z_soc_min = min(cotas)
     z_cim_min = min(
         (e.Z_cim_min for e in estribos if e.Z_cim_min is not None),
         default=z_soc_min - 1.0,
     )
 
+    if pilares:
+        z_cim_min = min([z_cim_min] + [p.Z_cim_limite for p in pilares if p.Z_cim_limite is not None])
+        items.append(ItemCompatibilidad('Cotas de pilares', 'Lecho y total por pilar',
+                                       'Cotas disponibles', all(p.Z_lecho_soc is not None for p in pilares)))
     # 1. Sondaje bajo cota socavada
     sondaje_ok = geo.cota_sondaje_min <= z_soc_min
     items.append(
@@ -49,40 +63,37 @@ def evaluar_compatibilidad(
         )
     )
 
-    # 3. Tipo cimentación coherente
-    tipo_ok = True
-    items.append(
-        ItemCompatibilidad(
-            item="Tipo de cimentación",
-            hidraulica=f"{geo.tipo_cimentacion.value}",
-            geotecnia="Recomendación geotécnica alineada",
-            compatible=tipo_ok,
-        )
-    )
-
     # 4. Reserva 1.00 m
     if geo.tipo_cimentacion == TipoCimentacion.SUPERFICIAL:
         reserva_ok = geo.cota_sondaje_min <= z_cim_min
         items.append(
             ItemCompatibilidad(
-                item="Reserva 1.00 m (Art. 1.2.4)",
+                item="Sondaje alcanza límite zapata (Art. 1.2.4)",
                 hidraulica=f"Z_cim_min = {z_cim_min:.2f} m",
-                geotecnia=f"Competente a {geo.cota_sondaje_min:.2f} m",
+                geotecnia=f"Fondo sondaje {geo.cota_sondaje_min:.2f} m; no prueba competencia",
                 compatible=reserva_ok,
-                accion="" if reserva_ok else "Estrato competente insuficiente a Z_cim_min",
+                accion="" if reserva_ok else "Profundizar exploración; definir cota real de zapata",
             )
         )
 
     # 5. Zapata sobre pilotes
     if geo.tipo_cimentacion == TipoCimentacion.ZAPATA_SOBRE_PILOTES:
         z_enc = geo.Z_encepado_zapata
-        z_contraido = z_soc_min
+        lechos = []
+        if caudales:
+            for c in caudales:
+                for est, r in zip(proyecto.estribos(), c.estribos):
+                    lechos.append(est.Z_lecho-r.general.y_sg_total)
+                for pil, r in zip(proyecto.pilares, c.pilares):
+                    if pil.Z_lecho is not None:
+                        lechos.append(pil.Z_lecho-r.general.y_sg_total)
+        z_contraido = min(lechos) if lechos else min(e.Z_lecho_actual-max(e.componentes_100.general.y_sg_total,e.componentes_500.general.y_sg_total) for e in estribos)
         zap_ok = z_enc is not None and verificar_zapata_pilotes(z_enc, z_contraido)
         items.append(
             ItemCompatibilidad(
                 item="Zapata sobre pilotes",
                 hidraulica=f"Lecho contraído ≈ {z_contraido:.2f} m",
-                geotecnia=f"Encepado = {z_enc:.2f} m" if z_enc else "Sin dato",
+                geotecnia=f"Encepado = {z_enc:.2f} m" if z_enc is not None else "Sin dato",
                 compatible=zap_ok,
                 accion="" if zap_ok else "Bajar encepado bajo lecho contraído",
             )
@@ -94,7 +105,7 @@ def evaluar_compatibilidad(
             ItemCompatibilidad(
                 item="Roca resistente a socavación",
                 hidraulica="Cimentación sobre roca",
-                geotecnia="Informe geológico confirma roca sana",
+                geotecnia="Roca resistente declarada por usuario; requiere sustento",
                 compatible=True,
             )
         )
@@ -109,7 +120,9 @@ def evaluar_compatibilidad(
         )
 
     # 7. Pilotes — longitud efectiva
-    if geo.tipo_cimentacion == TipoCimentacion.PROFUNDA and geo.Z_punta_pilotes is not None:
+    if geo.tipo_cimentacion in (TipoCimentacion.PROFUNDA, TipoCimentacion.ZAPATA_SOBRE_PILOTES) and geo.Z_punta_pilotes is None:
+        items.append(ItemCompatibilidad('Longitud efectiva pilotes', 'Requiere punta', 'Sin dato', False))
+    if geo.tipo_cimentacion in (TipoCimentacion.PROFUNDA, TipoCimentacion.ZAPATA_SOBRE_PILOTES) and geo.Z_punta_pilotes is not None:
         L_eff = longitud_efectiva_pilotes(z_soc_min, geo.Z_punta_pilotes)
         pil_ok = L_eff > 0
         items.append(
@@ -124,7 +137,7 @@ def evaluar_compatibilidad(
 
     compatible_global = all(i.compatible for i in items)
     if compatible_global:
-        conclusion = "Compatible con el estudio geológico-geotécnico."
+        conclusion = "Controles geométricos preliminares satisfechos; falta verificar capacidad portante y estabilidad con el prisma retirado."
     else:
         incompatibles = [i.item for i in items if not i.compatible]
         conclusion = f"Incompatibilidades detectadas: {', '.join(incompatibles)}."

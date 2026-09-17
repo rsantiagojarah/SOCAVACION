@@ -1,8 +1,9 @@
-"""Tablas normativas para interpolación."""
+"""Coeficientes locales contrastados y tablas históricas fuera del motor MTC-LL-2.0."""
 
 from socavacion.domain.enums import FormaEstribo, FormaPilar
 
-# Lischtvan-Lebediev: D50 (mm), x, A
+# LEGADO NO VALIDADO CONTRA HHD ec.59: NO utilizar para z ni para beta.
+# Lischtvan-Lebediev histórico: D50 (mm), x, A
 LISCHTVAN_TABLE: list[tuple[float, float, float]] = [
     (0.05, 0.64, 0.70),
     (0.25, 0.68, 0.82),
@@ -23,7 +24,7 @@ K1_ESTRIBO: dict[FormaEstribo, float] = {
     FormaEstribo.MURO_VERTICAL: 1.00,
     FormaEstribo.MURO_VERTICAL_ALETAS_45: 0.82,
     FormaEstribo.TALUD_2H1V: 0.55,
-    FormaEstribo.TALUD_3H1V: 0.42,
+    FormaEstribo.TALUD_3H1V: 0.55,  # Tabla 27: pendiente hacia cauce, sin distinción 2H/3H
 }
 
 # K1 forma pilar (HEC-18 CSU)

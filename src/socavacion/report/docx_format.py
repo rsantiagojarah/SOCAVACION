@@ -361,36 +361,63 @@ def enforce_uniform_typography(document: Document) -> None:
             fonts.set(qn("w:eastAsia"), FONT)
 
 
-def _set_table_geometry(tbl, widths, *, indent_twips: int) -> None:
-    width_twips = tuple(round(float(width) * 56.692913) for width in widths)
-    total = sum(width_twips)
-    properties = tbl._tbl.tblPr
-    table_width = properties.find(qn("w:tblW"))
-    if table_width is None:
-        table_width = OxmlElement("w:tblW")
-        properties.append(table_width)
-    table_width.set(qn("w:type"), "dxa")
-    table_width.set(qn("w:w"), str(total))
-    indent = properties.find(qn("w:tblInd"))
-    if indent is None:
-        indent = OxmlElement("w:tblInd")
-        properties.append(indent)
-    indent.set(qn("w:type"), "dxa")
-    indent.set(qn("w:w"), str(indent_twips))
-    layout = properties.find(qn("w:tblLayout"))
-    if layout is None:
-        layout = OxmlElement("w:tblLayout")
-        properties.append(layout)
-    layout.set(qn("w:type"), "fixed")
-    grid = tbl._tbl.tblGrid
-    for child in list(grid):
-        grid.remove(child)
-    for width in width_twips:
-        column = OxmlElement("w:gridCol")
-        column.set(qn("w:w"), str(width))
-        grid.append(column)
-    for row in tbl.rows:
-        for cell, width in zip(row.cells, width_twips):
-            tc_width = cell._tc.get_or_add_tcPr().get_or_add_tcW()
-            tc_width.set(qn("w:type"), "dxa")
-            tc_width.set(qn("w:w"), str(width))
+def bottom_border(paragraph, color: str, size: int) -> None:
+    _paragraph_border(paragraph, "bottom", color, size)
+
+
+def left_border(paragraph, color: str, size: int) -> None:
+    _paragraph_border(paragraph, "left", color, size)
+
+
+def _paragraph_border(paragraph, edge: str, color: str, size: int) -> None:
+    properties = paragraph._p.get_or_add_pPr()
+    borders = properties.find(qn("w:pBdr"))
+    if borders is None:
+        borders = OxmlElement("w:pBdr")
+        properties.append(borders)
+    existing = borders.find(qn(f"w:{edge}"))
+    if existing is not None:
+        borders.remove(existing)
+    border = OxmlElement(f"w:{edge}")
+    border.set(qn("w:val"), "single")
+    border.set(qn("w:sz"), str(size))
+    border.set(qn("w:space"), "1")
+    border.set(qn("w:color"), color)
+    borders.append(border)
+
+
+def shade_paragraph(paragraph, color: str) -> None:
+    properties = paragraph._p.get_or_add_pPr()
+    shading = properties.find(qn("w:shd"))
+    if shading is None:
+        shading = OxmlElement("w:shd")
+        properties.append(shading)
+    shading.set(qn("w:val"), "clear")
+    shading.set(qn("w:color"), "auto")
+    shading.set(qn("w:fill"), color)
+
+
+def set_cell_shading(cell, color: str) -> None:
+    properties = cell._tc.get_or_add_tcPr()
+    shading = properties.find(qn("w:shd"))
+    if shading is None:
+        shading = OxmlElement("w:shd")
+        properties.append(shading)
+    shading.set(qn("w:val"), "clear")
+    shading.set(qn("w:color"), "auto")
+    shading.set(qn("w:fill"), color)
+
+
+def set_cell_margins(cell, top: int, left: int, bottom: int, right: int) -> None:
+    properties = cell._tc.get_or_add_tcPr()
+    margins = properties.find(qn("w:tcMar"))
+    if margins is None:
+        margins = OxmlElement("w:tcMar")
+        properties.append(margins)
+    for name, value in (("top", top), ("left", left), ("bottom", bottom), ("right", right)):
+        node = margins.find(qn(f"w:{name}"))
+        if node is None:
+            node = OxmlElement(f"w:{name}")
+            margins.append(node)
+        node.set(qn("w:w"), str(value))
+        node.set(qn("w:type"), "dxa")

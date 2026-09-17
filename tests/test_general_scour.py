@@ -28,3 +28,21 @@ def test_lacey_positivo():
     ctx = ContextoGeneral(Q=850, y0=3.0, y1=3.2, W=45, q=18.89, d50_m=0.0025, d50_mm=2.5)
     r = lacey.calcular(ctx)
     assert r.valor >= 0
+
+
+def test_lischtvan_mtc_hhd_trazable_y_sin_doble_contraccion():
+    r = lischtvan.calcular_mtc_hhd(
+        Q=87.392412,
+        h_m=1.371399,
+        B=12.50,
+        dm_mm=2.95,
+        beta=1.05,
+        mu=0.89,
+        phi=1.0,
+        x=0.38,
+    )
+    assert r.metodo.startswith("Lischtvan-Levediev MTC HHD")
+    assert r.valor > 0
+    assert r.intermedios["alpha_c"] > 0
+    assert r.intermedios["Hs"] > r.intermedios["h_m"]
+    assert "Tabla 29" in r.notas

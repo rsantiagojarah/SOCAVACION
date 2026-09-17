@@ -1,90 +1,51 @@
-# Informe de Análisis de Socavación
+# Cálculo de socavación por apoyo
 
-**Proyecto:** {{ proyecto.nombre }}  
-**Fecha:** {{ fecha }}  
-**Norma:** Manual de Puentes MTC 2018 (Art. 1.2, 1.2.3a, 1.2.4, 1.2.6) / HEC-18
+Proyecto: {{ proyecto.nombre }}
 
----
+Modo: {{ proyecto.modo }}
 
-## 1. Caudales de cálculo
+Fecha: {{ fecha }}
 
-| Condición | Caudal (m³/s) |
-|-----------|---------------|
-| Diseño socavación | {{ "%.2f"|format(resultado.Q_diseno) }} |
-| Verificación socavación | {{ "%.2f"|format(resultado.Q_verif) }} |
+Procedimiento: LL granular MTC HHD ec.59 + local Froehlich/HIRE/CSU. MP 2018 artículos 1.2.3a, 1.2.4 y 2.4.3.8.3.4.
 
----
+## Escenarios independientes
 
-## 2. Socavación total por estribo (10.8)
+{% for c in resultado.caudales %}
+### {{ c.escenario }}: {{ c.Q }} m³/s
 
-| Estribo | y_s Q100 (m) | y_s Q500 (m) | **y_s diseño (m)** | Z lecho actual | Z lecho soc | Z cim mín |
-|---------|--------------|--------------|---------------------|----------------|-------------|-----------|
+| Apoyo | LP + LL (m) | Local (m) | Total (m) |
+|---|---:|---:|---:|
+{% for r in c.estribos -%}
+| Estribo {{ r.lado.value }} | {{ "%.6f"|format(r.general.y_sg_total) }} | {{ "%.6f"|format(r.y_sl.valor) }} | {{ "%.6f"|format(r.y_s_total) }} |
+{% endfor -%}
+{% for p in c.pilares -%}
+| Pilar {{ p.nombre }} | {{ "%.6f"|format(p.general.y_sg_total) }} | {{ "%.6f"|format(p.y_sp.valor) }} | {{ "%.6f"|format(p.y_s_total) }} |
+{% endfor %}
+{% endfor %}
+
+LL incluye contracción. El cero del sumando de contracción independiente evita doble conteo; no significa contracción física nula.
+LP es degradación independiente, sustentada; la agradación no reduce el diseño (criterio conservador de implementación).
+
+## Envolventes por apoyo
+
+| Apoyo | Diseño (m), escenario | Verificación (m), escenario | Z lecho socavado (m) | Límite fondo superficial Z <= (m) |
+|---|---|---|---:|---:|
 {% for e in resultado.estribos_finales -%}
-| {{ "E-I" if e.lado.value == "izquierdo" else "E-D" }} | {{ "%.3f"|format(e.y_s_100) }} | {{ "%.3f"|format(e.y_s_500) }} | **{{ "%.3f"|format(e.y_s_diseno) }}** | {{ "%.3f"|format(e.Z_lecho_actual) }} | {{ "%.3f"|format(e.Z_lecho_soc) }} | {{ "%.3f"|format(e.Z_cim_min) if e.Z_cim_min else "—" }} |
+| Estribo {{ e.lado.value }} | {{ "%.6f"|format(e.y_s_100) }}, {{ e.escenario_diseno }} | {{ "%.6f"|format(e.y_s_500) }}, {{ e.escenario_verificacion }} | {{ "%.6f"|format(e.Z_lecho_soc) }} | {{ "%.6f"|format(e.Z_cim_min) if e.Z_cim_min is not none else "No aplica" }} |
+{% endfor -%}
+{% for p in resultado.pilares_finales -%}
+| Pilar {{ p.nombre }} | {{ "%.6f"|format(p.y_s_diseno) }}, {{ p.escenario_diseno }} | {{ "%.6f"|format(p.y_s_verificacion) }}, {{ p.escenario_verificacion }} | {{ "%.6f"|format(p.Z_lecho_soc) if p.Z_lecho_soc is not none else "Falta cota" }} | {{ "%.6f"|format(p.Z_cim_limite) if p.Z_cim_limite is not none else "No aplica / falta cota" }} |
 {% endfor %}
 
----
+Diseño: resistencia y servicio. Verificación: evento extremo. La cimentación requiere comprobación geotécnica y estructural.
+Las etiquetas internas y_s_100/y_s_500 representan envolventes de cada condición; el desglose anterior conserva Q100 y Q500 originales.
 
-## 3. Desglose por componente
+## Compatibilidad geotécnica preliminar
 
-{% for caudal in resultado.caudales %}
-### {{ "Q100 — Diseño" if caudal.condicion.value == "diseno" else "Q500 — Verificación" }} (Q = {{ "%.1f"|format(caudal.Q) }} m³/s)
-
-| Estribo | y_sg (m) | y_sc (m) | y_sl (m) | y_s (m) | Régimen | Método general |
-|---------|----------|----------|----------|---------|---------|----------------|
-{% for r in caudal.estribos -%}
-| {{ "E-I" if r.lado.value == "izquierdo" else "E-D" }} | {{ "%.3f"|format(r.general.y_sg_total) }} | {{ "%.3f"|format(r.y_sc.valor) }} | {{ "%.3f"|format(r.y_sl.valor) }} | {{ "%.3f"|format(r.y_s_total) }} | {{ r.regimen.regimen.value }} | {{ r.general.metodo_gobernante }} |
-{% endfor %}
-
-{% if caudal.pilares %}
-**Pilares:**
-
-| Pilar | y_sp (m) | Método |
-|-------|----------|--------|
-{% for p in caudal.pilares -%}
-| {{ p.nombre }} | {{ "%.3f"|format(p.y_sp.valor) }} | {{ p.y_sp.metodo }} |
-{% endfor %}
-{% endif %}
-
-{% endfor %}
-
----
-
-## 4. Clasificación del cauce (10.2)
-
-- **Tipo:** {{ proyecto.cauce.tipo.value }}
-- **y_sg largo plazo:** {{ "%.3f"|format(proyecto.cauce.y_sg_lp) }} m
-{% if proyecto.cauce.notas %}  
-- **Notas:** {{ proyecto.cauce.notas }}{% endif %}
-
----
-
-## 5. Cimentación recomendada (10.10)
-
-- **Tipo:** {{ proyecto.geotecnia.tipo_cimentacion.value }}
-- **Reserva superficial:** 1.00 m (Art. 1.2.4) cuando aplica material erosionable
-
----
-
-## 6. Compatibilidad geológico-geotécnica (10.11)
-
-| Ítem | Hidráulica | Geotecnia | Compatible |
-|------|------------|-----------|------------|
+| Control | Hidráulica | Geotecnia | Satisface |
+|---|---|---|---|
 {% for item in resultado.geotecnia.items -%}
 | {{ item.item }} | {{ item.hidraulica }} | {{ item.geotecnia }} | {{ "Sí" if item.compatible else "No" }} |
 {% endfor %}
 
-**Conclusión:** {{ resultado.geotecnia.conclusion }}
-
----
-
-## 7. Referencias
-
-1. MTC (2018). *Manual de Puentes*. Art. 1.2, 1.2.2a, 1.2.3, 1.2.3a, 1.2.4, 1.2.5, 1.2.6, 1.3.3, 2.4.3.8.3.4.
-2. FHWA HEC-18. *Evaluating Scour at Bridges*.
-3. FHWA HEC-20. *Stream Stability at Highway Structures*.
-4. Lischtvan–Lebediev; Neill; Lacey (socavación general).
-
----
-
-*Generado por socavacion v1.0*
+{{ resultado.geotecnia.conclusion }}

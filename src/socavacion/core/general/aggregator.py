@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from socavacion.core.general import ContextoGeneral
-from socavacion.core.general import lacey, lischtvan, neill
+from socavacion.core.general import lischtvan
 from socavacion.domain.results import ComponenteSocavacion, ResultadoGeneral
+from socavacion.normative.mu import factor_mu
 
 
 def calcular_general(
@@ -16,22 +16,37 @@ def calcular_general(
     q1: float | None = None,
     q2: float | None = None,
 ) -> ResultadoGeneral:
-    ctx = ContextoGeneral(
-        Q=Q,
-        y0=hidraulica.y0,
-        y1=hidraulica.y1,
-        W=hidraulica.W1,
-        q=hidraulica.q1,
-        d50_m=d50_m,
-        d50_mm=d50_mm,
+    r_lischtvan = lischtvan.calcular_mtc_hhd(
+        Q=hidraulica.Q_ll if hidraulica.Q_ll is not None else Q,
+        h_m=hidraulica.h_m_ll or hidraulica.y1,
+        B=hidraulica.B_ll or hidraulica.W1,
+        dm_mm=hidraulica.Dm_mm or d50_mm,
+        beta=hidraulica.beta,
+        mu=factor_mu(hidraulica.luz_libre, hidraulica.V_mu if hidraulica.V_mu is not None else hidraulica.V1) if hidraulica.luz_libre is not None else hidraulica.mu,
+        phi=hidraulica.phi,
+        x=hidraulica.exponente_x,
+        h_local=hidraulica.h_local,
+        alpha=hidraulica.alpha,
     )
-    r_lischtvan = lischtvan.calcular(ctx)
-    r_neill = neill.calcular(ctx, q1=q1, q2=q2)
-    r_lacey = lacey.calcular(ctx)
+    r_lischtvan.fuentes_datos = dict(hidraulica.fuentes)
+    if hidraulica.luz_libre is not None:
+        r_lischtvan.referencias.append('MU13')
+        r_lischtvan.intermedios.update(luz_libre=hidraulica.luz_libre, V_mu=hidraulica.V_mu if hidraulica.V_mu is not None else hidraulica.V1)
+        r_lischtvan.unidades.update(luz_libre='m', V_mu='m/s')
+        if hidraulica.V_mu is None:
+            r_lischtvan.supuestos.append('V_mu=V1: se asume velocidad media de sección; validar, especialmente si V1 es local del pilar.')
+    if hidraulica.Dm_mm is None:
+        r_lischtvan.supuestos.append('Dm=D50 por falta de Dm explícito; no es equivalencia normativa.')
+    for campo in ('beta','phi','exponente_x') + (() if hidraulica.luz_libre is not None else ('mu',)):
+        if campo not in hidraulica.model_fields_set:
+            r_lischtvan.supuestos.append(f'{campo} predeterminado; requiere sustento.')
+    r_neill = ComponenteSocavacion('No evaluado (legado Neill)', 0, 'No participa en el cálculo MTC')
+    r_lacey = ComponenteSocavacion('No evaluado (legado Lacey)', 0, 'No participa en el cálculo MTC')
 
-    candidatos = [r_lischtvan, r_neill, r_lacey]
-    gobernante = max(candidatos, key=lambda c: c.valor)
-    y_sg_avenida = gobernante.valor
+    # El método MTC HHD ya incluye la contracción. Neill y Lacey quedan
+    # como campos históricos no evaluados, no como una envolvente mezclada.
+    gobernante = r_lischtvan
+    y_sg_avenida = r_lischtvan.valor
     y_sg_lp_efectivo = max(y_sg_lp, 0.0)  # agradación no reduce diseño
     y_sg_total = y_sg_lp_efectivo + y_sg_avenida
 

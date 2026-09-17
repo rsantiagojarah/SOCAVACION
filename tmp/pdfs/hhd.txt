@@ -1,0 +1,577 @@
+PDF 106
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+106 
+ 
+y de la  profundidad del agua. La velocidad real está dada 
+principalmente en función de las características  del río: pendiente, 
+rugosidad y tirante o profundidad del agua. 
+El método se basa en suponer que el caudal unitario correspondiente 
+a cada franja elemental en que se divide el cauce natural (Figura Nº 
+07) permanece constante durante el proceso erosi vo y puede 
+aplicarse, con los debidos ajustes, para casos de cauces definidos o 
+no, materiales de fondo cohesivos o friccionantes y para condiciones 
+de distribución de los materiales del fondo del cauce homogénea o 
+heterogénea. 
+ 
+FIGURA  Nº  07:  Sección transversal del cauce 
+(Fuente: Juarez Badillo E. y Rico Rodríguez A. (1992)). 
+ 
+a) Para suelos granulares 
+Se tiene la siguiente ecuación: 
+z
+m
+S
+D
+hH
++
+
+
+
+
+
+=
+1/1
+28.0
+3/5
+68.0 β
+α
+    (58)   
+La expresión anterior no considera el efecto de la contracción del 
+flujo debida a la presencia de estribos y pilares, ni el peso específico 
+del agua durante la creciente, por lo que debe corregirse mediante 
+unos factores de ajuste cuando se trata de evaluar un puente. 
+PDF 107
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+107 
+ 
+El factor de corrección por contracción μ es menor que 1 y contribuye 
+al incremento de la profundidad de socavación. 
+En la siguiente tabla se muestra el factor de corrección por 
+contracción del cauce μ. 
+ 
+ 
+ 
+  TABLA  Nº  13 :   Factor de corrección por contracción del cauce µ  
+ 
+ (FUENTE: Juárez Badillo E. y rico Rodríguez A., 1992)  
+V : Velocidad media en la sección transversal. 
+μ : 1.0, si no hay obstáculos. 
+Para puentes de una sola luz, la luz libre es la distancia entre 
+estribos. Para puentes de var ios tramos , la luz libre es la mínima 
+distancia entre dos pilares consecutivos, o entre el pilar y estribo más 
+próximos. 
+Adicionalmente, el efecto del peso específico del agua durante la 
+creciente se considera en otro factor de corrección φ que es mayor o 
+igual que la unidad y su efecto es reducir la profundidad de  
+socavación. 
+ 0.1=ϕ ,   si 0.1=mγ T/m3 (agua clara) 
+PDF 108
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+108 
+ 
+mγ  :  Peso específico de la muestra agua sedimento. 
+mγϕ 5143.154.0 +−=  ,  si mγ >  1.0 T/m3  (Lecho móvil)  
+(Coeficiente de correlación o de ajuste = 0.9983, (Higuera C. y Pérez G., 1989).) 
+La ecuación final para el cálculo de la socavación considerando los 
+coeficientes de corrección por contracción y peso específico de agua, 
+es la siguiente:  
+z
+m
+S
+D
+hH
++
+
+
+
+
+
+=
+1
+1
+28.0
+3/5
+68.0 βµϕ
+α       (59)   
+Donde: 
+hH s − :  Profundidad de socavación (m) 
+h  :  Tirante de agua (m) 
+mD  :  Diámetro característico del lecho (mm) 
+β  :  Coeficiente de frecuencia. 
+µ  :  Factor de corrección por contracción del cauce. 
+ϕ  : Factor de corrección por forma de transporte de sedimentos. 
+b) Para suelos cohesivos 
+Considerando los coeficientes de corrección por contracción  y peso 
+específico del agua durante crecientes, se tiene: 
+x
+s
+S
+hH
++
+
+
+
+
+
+=
+1
+1
+18.1
+3/5
+60.0 βµϕγ
+α     (60)  
+Donde: 
+ hH s − :  Profundidad de socavación (m) 
+h  :  Tirante de agua (m) 
+sγ  :  Peso específico del sedimento del lecho (T/m3) 
+PDF 136
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+136 
+ 
+afectan la socavación y análisis de datos de laboratorio. Es el método 
+más usado en los Estados Unidos de América  (HEC-18, 1993, 1995) 
+y es una de las dos que usa el programa HEC-RAS (1998). 
+43.0
+65.0
+0.2 racf
+s Fa
+hKKKKh
+y 
+
+
+
+= φ    (81)  
+Donde: 
+sy  : Profundidad de socavación local (m). 
+h : Profundidad de flujo aguas arriba del pilar (m). 
+fK  : También denominado K 1 es el factor que toma en cuenta la 
+forma del pilar. Tabla Nº 20. 
+φK  : También denominado K 2 es el factor que toma en cuenta el 
+ángulo de ataque del flujo. Tabla Nº 21 o ecuación (99). 
+cK  : También denominado K 3 es el factor que toma en cuenta la 
+forma del lecho. Tabla Nº 22, usualmente igual a 1.10. 
+aK  : También denominado K 4 es el factor que toma el 
+acorazamiento del sedimento del lecho (Ecuación (100) y Tabla Nº 
+23). Es te factor fue introducido posteriormente en la versión 
+corregida de HEC-18 (1993)  publicada en 1995. 
+a  : Ancho del pilar (m) 
+l  : Longitud del pilar (m) 
+rF  : Número de Froude en la sección aguas arriba del pilar igual    
+              a     ghV / . 
+V : Velocidad media del flujo directamente aguas arriba del pilar 
+PDF 137
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+137 
+ 
+ 
+    FIGURA  Nº  19:  Formas  típicas  de  pilares  de  puentes.  
+       (Fuente: HEC-18, 1993). 
+TABLA Nº 20: Factor de corrección por la forma del pilar Kf. Método de CSU 
+ 
+                                                 (Fuente: HEC-18, 1993). 
+El factor de corrección Kf se determina usando la tabla anterior 
+cuando el ángulo de ataque es  menor que 5°. En otro caso, Kφ 
+domina para ángulos mayores por lo que Kf debe ser tomado igual  a 
+1.0. Kf debe usarse solamente cuando las condiciones del flujo 
+influyen sobre toda la longitud de la pila pues el factor de corrección 
+podría ser menor en otros casos. 
+TABLA  Nº  21:  Factor de corrección por el ángulo de ataque del flujo 
+KΦ.  Método  de  CSU 
+        
+         
+           (Fuente: HEC-18, 1993). 
+PDF 138
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+138 
+ 
+Si al / es mayor que 12, se usan los valores correspondiente a 
+12/ =al  como máximos. 
+65.0
+cos 
+
+
+
+ += φφφ sena
+lK        (82)  
+ 
+TABLA Nº 22: Factor de corrección por la forma del lecho Kc. Método de CSU 
+ 
+(Fuente: HEC-18, 1993). 
+ 
+Se recomienda usar un valor de Kc igual a 1.1 considerando que el 
+lecho tiende a ser plano durante crecientes. 
+El factor de corrección Ka disminuye la profundidad de socavación 
+por acorazamiento del hoyo de socavación para materiales del lecho 
+con D50 mayor o igual a  2 mm o D95 mayor o igual a 20 mm (D50 ≥ 
+0.002 m o D95 ≥ 0.02 m). 
+TABLA  Nº  23:  Criterios  para  adoptar  Ka. 
+ 
+       (Fuente: HEC-18, 2001). 
+( )
+15.0
+4.0 Ra VK =   (83)  
+0
+9550
+501 >
+
+
+
+−
+−=
+icDcD
+icD
+R
+VV
+VVV  (84)  
+cDx
+x
+icDx Va
+DV
+053.0
+645.0 
+
+
+
+=  (85)  
+PDF 148
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+148 
+ 
+Donde: 
+h  : Profundidad media del flujo aguas arriba en el cauce  
+              principal. 
+L  : Longitud del estribo y accesos al puente que se opone al 
+              paso del agua. 
+τ  : Esfuerzo cortante en el lecho hacia aguas arriba del estribo. 
+cτ  : Esfuerzo cortante crítico para 50D  del material del lecho 
+              aguas arriba. 
+Las dos ecuaciones anteriores son aplicables para estribos con 
+pared vertical por lo que las profundidades de socavación resultantes 
+deben afectarse por un factor de corrección fK  para tener en cuenta 
+el efecto de otras formas. 
+fK  :  0.9 para estribos con aleros inclinados 45º, 0.8 para estribos 
+               con  pared inclinada  hacia  el  cauce. 
+b.3.2.4)  Método de Froehlich 
+La ecuación dada por Froehlich está basada en análisis dimensional 
+y en análisis de regresión de laboratorio para 170 mediciones de 
+socavación en lecho móvil. HEC -18 (1993) recomienda su uso para 
+socavación tanto en lecho móvil como en agua clara, para estribos 
+que se proyectan dentro del cauce principal o no y para flujo 
+concentrado en el cauce principal o combinado con flujo sobre las 
+zonas de inundación. 
+a) Socavación en agua clara y en lecho móvil 
+La ecuación de Froehlich que a continuación se expone es muy 
+utilizada en los Estados Unidos de América. 
+     
+127.2 61.0
+43.0
++
+
+
+
+
+=
+re
+e
+f
+e
+s Fh
+LKKh
+y
+θ    (92)  
+PDF 149
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+149 
+ 
+Donde: 
+sy  :  Profundidad de socavación (m) 
+eh  :  Profundidad  media  del  flujo  (profundidad  hidráulica) en la  
+               zona de inundación obstruida por el estribo aguas arriba del   
+               puente (m). 
+fK  :  Coeficiente  que  depende  de  la forma del estribo. Tabla Nº  
+              27, Figura Nº 23. 
+θK  :  Coeficiente  que  depende  del  ángulo  de  ataque  del flujo 
+            . Ecuación  (111),  Figura  Nº  24. 
+L  : Longitud  del  estribo  y  accesos  al  puente que se opone al  
+              paso  del  agua  proyectada  normalmente al flujo (m). 
+reF  : Número de Froude en la sección de aproximación obstruida  
+              por  el  estribo. 
+TABLA Nº 27: Coeficiente por forma del estribo Kf. Método de Froehlich 
+ 
+                 (Fuente: HEC-18., 1993). 
+ 
+( )
+13.0
+90/θθ =K  (93)    
+Donde: 
+θ  : Ángulo de inclinación del estribo. (Figura Nº 19) 
+)º90( <θ , si el estribo está inclinado hacia aguas abajo 
+)º90( >θ , si el estribo está inclinado hacia aguas arriba 
+PDF 150
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+150 
+ 
+                 
+  
+              FIGURA  Nº  23:  Formas comunes de estribos. Método de Froehlich. 
+                          (Fuente: HEC-18., 1993). 
+                 
+  
+FIGURA  Nº  24:  Factor  de  corrección Kθ .  Método  de  Froehlich 
+(Fuente: HEC-18., 1993). 
+LAh ee /=      
+e
+e
+re
+gh
+VF =      
+e
+e
+e
+A
+QV =     (94)    
+PDF 151
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+151 
+ 
+Donde: 
+eV  :  Velocidad del flujo obstruido por el estribo y los accesos al   
+              puente en la sección de aguas arriba (m/s) 
+eQ  : Caudal obstruido por los estribos o accesos, medido aguas  
+              arriba del puente (m3/s) 
+eA  : Área de flujo de la sección aguas arriba obstruida por los  
+              estribos (m2) 
+b) Socavación en agua clara 
+Froehlich también propone una ecuación únicamente para 
+condiciones de socavación en agua clara pero tiende a dar valores 
+muy bajos y no se ha verificado con datos de campo, por lo que 
+HEC-18 (1993) no recomienda su uso. Esta ecuación implica que el 
+material del lecho del río tenga un 
+6.750 ≥D cm y que la desviación 
+estándar geométrica del sedimento σ g sea mayor a 1.5. Se presenta 
+el método a efectos de comparación de resultados con otros 
+métodos. 
+ 178.0 87.1
+43.0
+50
+16.1
+63.0
++
+
+
+
+
+
+
+
+
+
+
+= −
+g
+e
+re
+e
+f
+e
+s
+D
+hFh
+LKKh
+y σθ           (95)  
+     
+5.0
+16
+84
+
+
+
+
+
+= D
+D
+gσ        
+Donde: 
+gσ  : Desviación estándar geométrica del material. 
+Nota: El número 1 al final de las dos ecuaciones propuestas por 
+Froehlich es un factor de seguridad que hace que las ecuaciones 
+predigan profundidades de socavación mayores que aquellas 
+medidas por experimentos. Este factor de seguridad debe ser usado 
+en el diseño. 
+PDF 156
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+156 
+ 
+-  Estribos  de  longitud  intermedia  (h ≤ L ≤ 25h) 
+En este caso, la forma y la longitud del estribo, el ángulo de ataque y 
+la profundidad de flujo, tienen importancia sobre la profundidad de 
+socavación, tal como reflejan las siguientes ecuaciones: 
+5.0** )(2 hLKKy fs θ=              (100) 
+ff KK =*
+, para hL 10≤  
+)5.11.0)(1(* −
+
+
+
+−+= h
+LKKK fff , para hLh 2510 <<  
+0.1* =fK , para hL 25≥  
+θθ KK =*
+, para hL 3≥  
+)5.05.1)(1(*
+
+
+
+
+−−+= h
+LKKK θθθ , para hLh 31 <<  
+0.1* =θK , para hL ≤  
+-  Estribos largos  (L > 25h) 
+hKys θ10=                    (101) 
+hmáxys 10=                  (102) 
+Las ecuaciones anteriores consideran que la forma del estribo pierde 
+importancia cuando el estribo es largo. 
+b.3.2.6)   Método  HIRE  
+HEC-18 (1993), incluye otra ecuación desarrollada a partir de datos 
+del Cuerpo de Ingenieros Militares de los Estados Unidos para la 
+socavación que se produce en la punta de los espigones o espolones 
+construidos en el río Mississippi. La ecuación HIRE es por lo tanto 
+aplicable cuando el estribo penetra en el cauce principal. 
+PDF 157
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+157 
+ 
+33.0
+55.04 r
+f
+s FKKhy θ
+
+
+
+
+=       (103)      
+Donde: 
+sy  :  Profundidad de socavación (m) 
+h  :  Profundidad media del flujo al pie del estribo en el cauce  
+               principal, considerando la sección transversal 
+               inmediatamente aguas arriba del puente (m) 
+rF  :  Número de Froude basado en la velocidad y profundidad al  
+               pie justo aguas arriba del estribo. 
+fK  :  Factor de corrección por forma del estribo. Tabla Nº 27. 
+θK  :  Factor de corrección por ángulo de ataque del flujo. 
+                (Ecuación 123). 
+ 
+                       b.4) RERUMEN DE METODOLOGIAS Y FÓRMULAS PARA EL  
+                                   CÁLCULO DE LA SOCAVACIÓN   
+          Finalmente en la Tabla Nº 29 se presenta un resumen de las 
+          metodologías usualmente utilizadas en nuestro medio para la 
+          estimación de la socavación general, socavación por contracción y 
+                     socavación local en estribos y pilares. 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

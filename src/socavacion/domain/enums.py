@@ -41,3 +41,4 @@ class LadoEstribo(str, Enum):
 class CondicionCaudal(str, Enum):
     DISENO = "diseno"
     VERIFICACION = "verificacion"
+    DESBORDAMIENTO = "desbordamiento"

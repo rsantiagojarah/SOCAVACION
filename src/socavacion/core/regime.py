@@ -50,15 +50,16 @@ def k1_contraccion(v_star: float, omega: float) -> float:
 
 
 def detectar_regimen(
-    V1: float, y1: float, d50_m: float, sf: float
+    V1: float, y1: float, d50_m: float, sf: float | None, *, calcular_legacy: bool = True
 ) -> RegimenResult:
     """Clasifica lecho vivo vs agua clara."""
     Vc = velocidad_critica(y1, d50_m)
     regimen = RegimenLecho.LECHO_VIVO if V1 > Vc else RegimenLecho.AGUA_CLARA
     Fr = numero_froude(V1, y1)
-    v_star = velocidad_corte(y1, sf)
-    omega = velocidad_caida(d50_m)
-    k1 = k1_contraccion(v_star, omega)
+    v_star = velocidad_corte(y1, sf) if sf is not None else None
+    # El motor LL trazable no utiliza estas aproximaciones históricas de Laursen.
+    omega = velocidad_caida(d50_m) if calcular_legacy else None
+    k1 = k1_contraccion(v_star, omega) if calcular_legacy and v_star is not None else None
     return RegimenResult(
         regimen=regimen,
         Vc=Vc,
